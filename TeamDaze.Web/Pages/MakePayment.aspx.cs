@@ -17,7 +17,7 @@ namespace TeamDaze.Web.Views
         protected void Unnamed_Click(object sender, EventArgs e)
         {
             //redirect to payment page
-            Response.Redirect("/SubmitPayment.aspx");
+            Response.Redirect("SubmitPayment.aspx");
         }
 
         protected void Unnamed_Click1(object sender, EventArgs e)

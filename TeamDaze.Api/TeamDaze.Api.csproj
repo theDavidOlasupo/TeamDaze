@@ -194,9 +194,12 @@
     </Compile>
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DAL\CustomerRepository.cs" />
+    <Compile Include="DAL\InecRepository.cs" />
+    <Compile Include="DAL\Mailer.cs" />
     <Compile Include="DAL\NibssRepository.cs" />
     <Compile Include="DTO\AES.cs" />
     <Compile Include="DTO\BvnSearchReq.cs" />
+    <Compile Include="DTO\BvnSearchResp.cs" />
     <Compile Include="DTO\CustomerCreation.cs" />
     <Compile Include="DTO\Helper.cs" />
     <Compile Include="DTO\MatchWithBvnReq.cs" />

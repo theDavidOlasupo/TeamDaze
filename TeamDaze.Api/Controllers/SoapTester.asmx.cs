@@ -42,7 +42,7 @@ namespace TeamDaze.Api.Controllers
         }
 
         [WebMethod]
-        public BvnSearchReq BvnSearch(string bvn)
+        public BvnSearchResp BvnSearch(string bvn)
         {
             NibssRepository restobj = new NibssRepository();
             var resp = restobj.BvnSearch(bvn);
