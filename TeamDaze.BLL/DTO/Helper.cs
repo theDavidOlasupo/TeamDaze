@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 
-namespace TeamDaze.Api.DTO
+namespace TeamDaze.BLL.DTO
 {
     public class Helper
     {

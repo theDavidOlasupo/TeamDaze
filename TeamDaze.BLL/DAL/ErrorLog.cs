@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace TeamDaze.Api.DAL
+namespace TeamDaze.BLL.DAL
 {
 
     class ErrorLog

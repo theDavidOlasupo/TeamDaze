@@ -5,11 +5,11 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
-using TeamDaze.Api.DTO;
+using TeamDaze.BLL.DTO;
 
-namespace TeamDaze.Api.DAL
+namespace TeamDaze.BLL.DAL
 {
-    class NibssRepository
+    public class NibssRepository
     {
 
         public string GenerateCredentials(string bvn)

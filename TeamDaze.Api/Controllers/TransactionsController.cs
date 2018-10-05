@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using TeamDaze.Api.DAL;
+using TeamDaze.BLL.DAL;
 using TeamDaze.BLL.DTO;
 
 namespace TeamDaze.Api.Controllers

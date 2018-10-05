@@ -1,5 +1,4 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.master.cs" Inherits="TeamDaze.Web.Default" %>
-<%@ Register Assembly="RJS.Web.WebControl.PopCalendar" Namespace="RJS.Web.WebControl" TagPrefix="rjs" %>
 <!DOCTYPE html>
 
 <html lang="en">

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TeamDaze.Api.Utilities;
+using TeamDaze.BLL.DAL;
 using TeamDaze.BLL.DTO;
 using TeamDaze.BLL.EmailNotification;
 
@@ -25,6 +26,9 @@ namespace TeamDaze.Web.Pages
             Random rnd = new Random();
             string EndpointUrl = $"{BaseUrl}/api/nibss/searchbvn?bvn={txtBVN.Text}";
             string responseString = "";
+           // NibssRepository nibssRepository = new NibssRepository();
+           //var resp= nibssRepository.BvnSearch(txtBVN.Text);
+
             var bvnSearchResponse = await new ApiRequest(EndpointUrl).MakeHttpClientRequest(null, ApiRequest.Verbs.GET, null);
             if (bvnSearchResponse.StatusCode == System.Net.HttpStatusCode.OK)
             {

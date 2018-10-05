@@ -24,7 +24,7 @@ namespace TeamDaze.Web.Pages
             try
             {
                 TeamDaze.Api.Controllers.SoapTester soapTester = new Api.Controllers.SoapTester();
-               // var BvnDetails = soapTester.BvnSearch(bvn);
+             var BvnDetails = soapTester.BvnSearch(bvn);
                 if (BvnDetails != null)
                 {
                     //send OTP to mail &number

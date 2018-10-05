@@ -6,7 +6,7 @@ using System.Net.Mail;
 using System.Net.Mime;
 using System.Web;
 
-namespace TeamDaze.Api.DAL
+namespace TeamDaze.BLL.DAL
 {
     public class Mailer
     {

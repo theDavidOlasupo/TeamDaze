@@ -200,28 +200,6 @@
     <Compile Include="Controllers\OtpController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="DAL\CustomerRepository.cs" />
-    <Compile Include="DAL\InecRepository.cs" />
-    <Compile Include="DAL\Mailer.cs" />
-    <Compile Include="DAL\NibssRepository.cs" />
-    <Compile Include="DAL\OtpRepository.cs" />
-    <Compile Include="DTO\AES.cs" />
-    <Compile Include="DTO\BvnSearchReq.cs" />
-    <Compile Include="DTO\BvnSearchResp.cs" />
-    <Compile Include="DTO\CustomerCreation.cs" />
-    <Compile Include="DTO\FlutterCardResponse.cs" />
-    <Compile Include="DTO\FlutterChargeCard.cs" />
-    <Compile Include="DTO\Helper.cs" />
-    <Compile Include="DTO\MatchWithBvnReq.cs" />
-    <Compile Include="DTO\MatchWithBvnResp.cs" />
-    <Compile Include="DTO\MatchWithPhoneNumrReq.cs" />
-    <Compile Include="DTO\MerchantCreation.cs" />
-    <Compile Include="DAL\ErrorLog.cs" />
-    <Compile Include="DAL\MerchantRepository.cs" />
-    <Compile Include="DAL\MSQconn.cs" />
-    <Compile Include="DAL\TransactionRepository.cs" />
-    <Compile Include="DTO\TokenizeCard.cs" />
-    <Compile Include="DTO\TransactionDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

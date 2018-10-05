@@ -5,8 +5,8 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using TeamDaze.Api.DAL;
-using TeamDaze.Api.DTO;
+using TeamDaze.BLL.DAL;
+using TeamDaze.BLL.DTO;
 
 namespace TeamDaze.Web.Pages
 {

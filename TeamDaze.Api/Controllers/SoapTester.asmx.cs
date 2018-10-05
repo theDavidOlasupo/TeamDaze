@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
-using TeamDaze.Api.DAL;
-using TeamDaze.Api.DTO;
+using TeamDaze.BLL.DAL;
+using TeamDaze.BLL.DTO;
 
 namespace TeamDaze.Api.Controllers
 {
@@ -41,12 +41,12 @@ namespace TeamDaze.Api.Controllers
             return resp;
         }
 
-        //[WebMethod]
-        //public BvnSearchResp BvnSearch(string bvn)
-        //{
-        //    NibssRepository restobj = new NibssRepository();
-        //    var resp = restobj.BvnSearch(bvn);
-        //    return resp;
-        //}
+        [WebMethod]
+        public TeamDaze.BLL.DTO. BvnSearchResp BvnSearch(string bvn)
+        {
+            NibssRepository restobj = new NibssRepository();
+            var resp = restobj.BvnSearch(bvn);
+            return resp;
+        }
     }
 }

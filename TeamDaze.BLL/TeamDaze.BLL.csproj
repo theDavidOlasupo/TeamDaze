@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TeamDaze.BLL</RootNamespace>
     <AssemblyName>TeamDaze.BLL</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,10 +35,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.106.4.2\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,11 +51,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\CustomerRepository.cs" />
+    <Compile Include="DAL\ErrorLog.cs" />
+    <Compile Include="DAL\InecRepository.cs" />
+    <Compile Include="DAL\MerchantRepository.cs" />
+    <Compile Include="DAL\MSQconn.cs" />
+    <Compile Include="DAL\NibssRepository.cs" />
+    <Compile Include="DAL\OtpRepository.cs" />
+    <Compile Include="DAL\TransactionRepository.cs" />
     <Compile Include="DTO\AES.cs" />
     <Compile Include="DTO\BvnSearchReq.cs" />
     <Compile Include="DTO\BvnSearchResp.cs" />
     <Compile Include="DTO\CustomerCreation.cs" />
     <Compile Include="DTO\DefaultApiReponse.cs" />
+    <Compile Include="DTO\FlutterCardResponse.cs" />
+    <Compile Include="DTO\FlutterChargeCard.cs" />
     <Compile Include="DTO\Helper.cs" />
     <Compile Include="DTO\IApiResponse.cs" />
     <Compile Include="DTO\MatchWithBvnReq.cs" />

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Web;
-using TeamDaze.Api.DTO;
+using TeamDaze.BLL.DTO;
 
-namespace TeamDaze.Api.DAL
+namespace TeamDaze.BLL.DAL
 {
     public class TransactionRepository
     {

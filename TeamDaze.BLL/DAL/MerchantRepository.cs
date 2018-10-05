@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
-using TeamDaze.Api.DTO;
+using TeamDaze.BLL.DTO;
 
-namespace TeamDaze.Api.DAL
+namespace TeamDaze.BLL.DAL
 {
     public class MerchantRepository
     {

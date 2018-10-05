@@ -10,8 +10,8 @@ using System.Web.UI.WebControls;
 
 using System.Drawing.Imaging;
 using Neurotec.Biometrics;
-using TeamDaze.Api.DTO;
-using TeamDaze.Api.DAL;
+using TeamDaze.BLL.DTO;
+using TeamDaze.BLL.DAL;
 
 namespace TeamDaze.Web.Pages
 {
@@ -103,56 +103,56 @@ namespace TeamDaze.Web.Pages
             // txtPhone.Text = "";
 
         }
-        public string doEnroll(object sender, DoWorkEventArgs args)
-        {
-            EnrollmentResult enrollmentResults = new EnrollmentResult();
-            enrollmentResults.engineUser = _engine.Enroll(20000, out enrollmentResults.engineStatus);
-            args.Result = enrollmentResults;
-            if (enrollmentResults.engineStatus == NffvStatus.TemplateCreated)
-            {
-                //it took a snap shot
+        //public string doEnroll(object sender, DoWorkEventArgs args)
+        //{
+        //    EnrollmentResult enrollmentResults = new EnrollmentResult();
+        //    enrollmentResults.engineUser = _engine.Enroll(20000, out enrollmentResults.engineStatus);
+        //    args.Result = enrollmentResults;
+        //    if (enrollmentResults.engineStatus == NffvStatus.TemplateCreated)
+        //    {
+        //        //it took a snap shot
 
-                var img = enrollmentResults.engineUser.GetBitmap();
-                var base64 = ConvertImageToBAse64(img);
-                return base64;
-                //convert the image to base 64 
-            }
-            else
-            {
-                return "99";
-            }
-        }
-        public string ConvertImageToBAse64(Bitmap bitmapImage)
-        {
-            MemoryStream ms = new MemoryStream();
+        //        var img = enrollmentResults.engineUser.GetBitmap();
+        //        var base64 = ConvertImageToBAse64(img);
+        //        return base64;
+        //        //convert the image to base 64 
+        //    }
+        //    else
+        //    {
+        //        return "99";
+        //    }
+        //}
+        //public string ConvertImageToBAse64(Bitmap bitmapImage)
+        //{
+        //    MemoryStream ms = new MemoryStream();
 
-            bitmapImage.Save(ms, ImageFormat.Png);
-            string Base64Image = Convert.ToBase64String(ms.ToArray());
-            Fingerprint fp2 = new Fingerprint();
-            //
-            fp2.AsBitmap = new Bitmap(bitmapImage);
+        //    bitmapImage.Save(ms, ImageFormat.Png);
+        //    string Base64Image = Convert.ToBase64String(ms.ToArray());
+        //    Fingerprint fp2 = new Fingerprint();
+        //    //
+        //    fp2.AsBitmap = new Bitmap(bitmapImage);
 
-            Person person = new Person();
-            person.Fingerprints.Add(fp2);
+        //    Person person = new Person();
+        //    person.Fingerprints.Add(fp2);
 
-            //  fp2.AsIsoTemplate 
-            Afis.Extract(person);
-            var imgArray = fp2.Template;
-            var isoTemplate = fp2.AsIsoTemplate;
-            var isoImage = Convert.ToBase64String(isoTemplate);
-            var ImagByteArray = Convert.ToBase64String(imgArray);
-            ms.Position = 0;
+        //    //  fp2.AsIsoTemplate 
+        //    Afis.Extract(person);
+        //    var imgArray = fp2.Template;
+        //    var isoTemplate = fp2.AsIsoTemplate;
+        //    var isoImage = Convert.ToBase64String(isoTemplate);
+        //    var ImagByteArray = Convert.ToBase64String(imgArray);
+        //    ms.Position = 0;
 
-            //BinaryWriter a = new BinaryWriter(File.Open("iso19794-2 template from fp_image1.dat", FileMode.Create));
-            //foreach (byte element in isoTemplate)
-            //{
-            //    a.Write(element);
-            //}
+        //    //BinaryWriter a = new BinaryWriter(File.Open("iso19794-2 template from fp_image1.dat", FileMode.Create));
+        //    //foreach (byte element in isoTemplate)
+        //    //{
+        //    //    a.Write(element);
+        //    //}
 
 
-            return ImagByteArray;
-            //return Base64Image;
-        }
+        //    return ImagByteArray;
+        //    //return Base64Image;
+        //}
         //process payment
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -176,10 +176,10 @@ namespace TeamDaze.Web.Pages
                     string merchantAPI = "";
 
                     //get the user's details with the userID
-                    TeamDaze.Api.DTO.CustomerCreation customerDetails = new Api.DTO.CustomerCreation();
+                    CustomerCreation customerDetails = new CustomerCreation();
                     UserBVN = customerDetails.BVN;
 
-                    TeamDaze.Api.DAL.CustomerRepository customer = new Api.DAL.CustomerRepository();
+                    CustomerRepository customer = new CustomerRepository();
                     var userDetail = customer.GetCustomer(UserBVN);
                     if (userDetail.Item1)
                     {
