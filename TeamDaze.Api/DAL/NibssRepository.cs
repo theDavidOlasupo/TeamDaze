@@ -165,41 +165,51 @@ namespace TeamDaze.Api.DAL
 
         }
 
-        public BvnSearchReq BvnSearch(string bvn)
+        public BvnSearchResp BvnSearch(string bvn)
         {
-            string NibssBaseUrl = ConfigurationManager.AppSettings["NibssBaseApiUrl"];
-            string MethodUrl = "/BVNSearch";
-            NibssBaseUrl += MethodUrl;
-            RestClient client = new RestClient(NibssBaseUrl);
-            //  ByPassProxy(client);
-            var hash = ConfigurationManager.AppSettings["hackHASH"];
-            var request = new RestRequest(Method.POST);
-            request.AddHeader("Accept", "application/json");
-            request.AddHeader("Content-Type", "application/json");
-            request.AddHeader("Hash", hash);
+            BvnSearchResp bvndetails = new BvnSearchResp();
 
-            String key = ConfigurationManager.AppSettings["hackAES"]; //"OUGW5XNSc/82rXAr"; 
-            String iv = ConfigurationManager.AppSettings["hackIVKey"];// "1BNEMKUJXi3svqFk"; 
-            BvnSearchReq req = new BvnSearchReq
+            try
             {
-                BVN = bvn
-            };
-            var json = new JavaScriptSerializer().Serialize(req);
-            //encrypt the request
-            String encryptedRequest = AES.Encrypt(json.ToString(), key, iv);
-            var requestBody = request.AddParameter("application/json", encryptedRequest, ParameterType.RequestBody);
-            // String decryptedText = AES.Decrypt(encryptedRequest, key, iv);
-            var response = client.Execute(request);
-            //decrypt the response body
-            var responseBody = response.Content.ToString();
-            new ErrorLog(responseBody);
-            string decryptedResponse = AES.Decrypt(responseBody, key, iv);
-            BvnSearchReq bvndetails = new BvnSearchReq();
-            bvndetails = new JavaScriptSerializer().Deserialize<BvnSearchReq>(decryptedResponse);
-            //log response
-            new ErrorLog(bvndetails.ToString() + "bvn search decrpted response: " + decryptedResponse);
+                string NibssBaseUrl = ConfigurationManager.AppSettings["NibssBaseApiUrl"];
+                string MethodUrl = "/BVNSearch";
+                NibssBaseUrl += MethodUrl;
+                RestClient client = new RestClient(NibssBaseUrl);
+                //  ByPassProxy(client);
+                var hash = ConfigurationManager.AppSettings["hackHASH"];
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("Accept", "application/json");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Hash", hash);
 
-            return bvndetails;
+                String key = ConfigurationManager.AppSettings["hackAES"]; //"OUGW5XNSc/82rXAr"; 
+                String iv = ConfigurationManager.AppSettings["hackIVKey"];// "1BNEMKUJXi3svqFk"; 
+                BvnSearchReq req = new BvnSearchReq
+                {
+                    BVN = bvn
+                };
+                var json = new JavaScriptSerializer().Serialize(req);
+                //encrypt the request
+                String encryptedRequest = AES.Encrypt(json.ToString(), key, iv);
+                var requestBody = request.AddParameter("application/json", encryptedRequest, ParameterType.RequestBody);
+                // String decryptedText = AES.Decrypt(encryptedRequest, key, iv);
+                var response = client.Execute(request);
+                //decrypt the response body
+                var responseBody = response.Content.ToString();
+                new ErrorLog(responseBody);
+                string decryptedResponse = AES.Decrypt(responseBody, key, iv);
+                bvndetails = new JavaScriptSerializer().Deserialize<BvnSearchResp>(decryptedResponse);
+                //log response
+                new ErrorLog(bvndetails.ToString() + "bvn search decrpted response: " + decryptedResponse);
+
+                return bvndetails;
+            }
+            catch (Exception ex)
+            {
+                new ErrorLog(ex.ToString());
+                //  throw;
+                return bvndetails;
+            }
 
         }
     }

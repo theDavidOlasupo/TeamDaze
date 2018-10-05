@@ -46,6 +46,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Neurotec.Biometrics.Nffv">
+      <HintPath>..\lib\Neurotec.Biometrics.Nffv.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp, Version=106.4.2.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.106.4.2\lib\net452\RestSharp.dll</HintPath>
     </Reference>
@@ -1709,7 +1712,6 @@
     <Content Include="Content\Images\picture5.jpg" />
     <Content Include="Content\Images\picture8.jpg" />
     <Content Include="Content\Site.css" />
-    <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1838,8 +1840,6 @@
     <Content Include="Default.Master" />
     <Content Include="PopCalendar2005\Thumbs.db" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Index.aspx" />
-    <Content Include="Pages\SubmitPayment.aspx" />
     <Content Include="Pages\TransactionsHistory.aspx" />
     <Content Include="PopCalendar2005\calendar.gif" />
     <Content Include="PopCalendar2005\CSS\Classic.css" />
@@ -1939,13 +1939,6 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Default.Master.cs">
       <DependentUpon>Default.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1955,20 +1948,6 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\SubmitPayment.aspx.cs">
-      <DependentUpon>SubmitPayment.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\SubmitPayment.aspx.designer.cs">
-      <DependentUpon>SubmitPayment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\TransactionsHistory.aspx.cs">
       <DependentUpon>TransactionsHistory.aspx</DependentUpon>
@@ -2011,7 +1990,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2026,7 +2004,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TeamDaze.BLL\TeamDaze.BLL.csproj">
-      <Project>{8456ab18-354f-40d6-8be5-24d4a8f68c2f}</Project>
+      <Project>{8456AB18-354F-40D6-8BE5-24D4A8F68C2F}</Project>
       <Name>TeamDaze.BLL</Name>
     </ProjectReference>
   </ItemGroup>
