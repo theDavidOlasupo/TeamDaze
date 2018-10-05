@@ -201,6 +201,8 @@
     <Compile Include="DTO\BvnSearchReq.cs" />
     <Compile Include="DTO\BvnSearchResp.cs" />
     <Compile Include="DTO\CustomerCreation.cs" />
+    <Compile Include="DTO\FlutterCardResponse.cs" />
+    <Compile Include="DTO\FlutterChargeCard.cs" />
     <Compile Include="DTO\Helper.cs" />
     <Compile Include="DTO\MatchWithBvnReq.cs" />
     <Compile Include="DTO\MatchWithBvnResp.cs" />
@@ -210,6 +212,7 @@
     <Compile Include="DAL\MerchantRepository.cs" />
     <Compile Include="DAL\MSQconn.cs" />
     <Compile Include="DAL\TransactionRepository.cs" />
+    <Compile Include="DTO\TokenizeCard.cs" />
     <Compile Include="DTO\TransactionDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

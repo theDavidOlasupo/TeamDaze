@@ -11,16 +11,16 @@
 
  <div class="form-group">
         <asp:Label runat="server" Text="Amount To Pay:" ForeColor="White" Font-Bold="true" ID="Label4"> </asp:Label>
-        <asp:TextBox runat="server" autocomplete="off" CssClass="dateT form-control " placeholder="Enter Amount Here" ID="txtAmount" MaxLength="6"></asp:TextBox>
-        <asp:Label runat="server" Text="BVN/Phone-Number:" ForeColor="White" Font-Bold="true" ID="Label1"> </asp:Label>
+        <asp:TextBox runat="server" autocomplete="off" CssClass="dateT form-control " placeholder="Enter Amount Here" ID="txtAmount" MaxLength="6"  ></asp:TextBox>
+        <%--<asp:Label runat="server" Text="BVN/Phone-Number:" ForeColor="White" Font-Bold="true" ID="Label1"> </asp:Label>
         <asp:TextBox runat="server" autocomplete="off" CssClass="dateT form-control " placeholder="Enter BVN/PhoneNUmber here" ID="txtBvn" MaxLength="12"></asp:TextBox>
-        <em style="color: white">**Dial *565*0# to get your BVN number </em>
+        --%><em style="color: white">**Dial *565*0# to get your BVN number </em>
        
      <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Required Field*" ControlToValidate="txtAmount" BackColor="Red"></asp:RequiredFieldValidator>
      <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Required Field*" ControlToValidate="txtBvn" BackColor="Red"></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ValidationExpression="^\d+$" ControlToValidate="txtBvn" BackColor="Red" ErrorMessage="Enter a valid number sequence"></asp:RegularExpressionValidator>
-        <em style="color: white">**Charges apply</em>
-     <button runat="server" id="btnSubmit" class="btn btn-warning" onclick="btn_Click" title="submit"> Submt form</button>
+        <%--<asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ValidationExpression="^\d+$" ControlToValidate="txtBvn" BackColor="Red" ErrorMessage="Enter a valid number sequence"></asp:RegularExpressionValidator>--%>
+        <%--<em style="color: white">**Charges apply</em>--%>
+     <button runat="server" id="btnSubmit" class="btn btn-warning" onclick="btn_Click" title="submit">Make Payment</button>
         <%--<asp:Button ID="btnCapture" runat="server" OnClientClick="this.disabled=true;" UseSubmitBehavior="false" CssClass="btn btn-warning" Text="Capture FingerPrint & Pay" Visible="true" />--%>
 
     </div>
