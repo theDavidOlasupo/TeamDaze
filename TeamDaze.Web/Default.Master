@@ -1,0 +1,127 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.master.cs" Inherits="TeamDaze.Web.Default" %>
+<%@ Register Assembly="RJS.Web.WebControl.PopCalendar" Namespace="RJS.Web.WebControl" TagPrefix="rjs" %>
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title><%: Page.Title %> - DFS</title>
+    <link rel='shortcut icon' type='image/x-icon' href='/icon.ico' />
+    <meta name="description" content="" />
+
+    <!-- mobile settings -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+
+    <!-- WEB FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+    <!-- CORE CSS -->
+    <link href="~/assets/plugins/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+
+    <!-- THEME CSS -->
+    <link href="~/assets/css/essentials.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/layout.css" rel="stylesheet" type="text/css" />
+       <link href="~/assets/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/color_scheme/green.css" rel="stylesheet" type="text/css" id="color_scheme" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="wrapper" class="clearfix">
+            <aside id="aside">
+                <nav id="sideNav">
+                    <!-- MAIN MENU -->
+                    <ul class="nav nav-list">
+
+                        <li>
+                            <a href="#">
+                                <i class="main-icon fa fa-table"></i><span>Dashboard</span>
+                            </a>
+                            <ul>
+                                <li>  <a href="~/Screens/Dashboard/DeviceStatus.aspx" runat="server">Device Status</a></li>
+                            </ul>
+                            <ul>
+                                <li>  <a href="~/Screens/Security/Register.aspx" runat="server">Agent Registration</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="~/Screens/Prequalification/SpectaInfo.aspx" runat="server">
+                                <i class="main-icon fa fa-user"></i><span>New Customer</span>
+                            </a>
+                        </li>
+
+                          <li>
+                            <a href="~/Screens/Security/Logout.aspx" runat="server">
+                                <i class="main-icon fa fa-power-off"></i><span>Log out</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+                <span id="asidebg">
+                    <!-- aside fixed background -->
+                </span>
+            </aside>
+            <!-- /ASIDE -->
+            <!-- HEADER -->
+            <header id="header">
+
+                <!-- Mobile Button -->
+                <button id="mobileMenuBtn"></button>
+
+                <!-- Logo -->
+                <span class="logo pull-left" style="margin-right: 20px;">Sterling Bank
+                </span>
+
+                <nav>
+
+                    <!-- OPTIONS LIST -->
+                    <ul class="nav pull-right">
+
+                        <!-- USER OPTIONS -->
+                        <li class="dropdown pull-left">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <img class="user-avatar" alt="" src="../../assets/images/noavatar.jpg" height="34" />
+                                <span class="user-name">
+
+                                    <span class="hidden-xs" runat="server" id="loginUsername">
+                                        <i class="fa fa-angle-down"></i>
+                                    </span>
+
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu hold-on-click">
+                                <li>
+                                    <!-- settings -->
+                                    <a href="page-user-profile.html"><i class="fa fa-cogs"></i>Settings</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <!-- logout -->
+                                    <a href="~/Screens/Security/Logout.aspx" runat="server"><i class="fa fa-power-off"></i>Log Out</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- /USER OPTIONS -->
+
+                    </ul>
+                    <!-- /OPTIONS LIST -->
+
+                </nav>
+
+            </header>
+            <!-- /HEADER -->
+            <section id="middle">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+                <hr />
+                <footer class="padding-20">
+                    <p>&copy; <%= DateTime.Now.Year %>  - Team Daze</p>
+                </footer>
+            </section>
+        </div>
+    </form>
+    <script type="text/javascript">var plugin_path = '../../assets/plugins/';</script>
+    <script type="text/javascript" src="../../assets/plugins/jquery/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/app.js"></script>
+</body>
+</html>

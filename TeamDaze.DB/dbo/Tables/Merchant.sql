@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Merchant]
 (
-	[Id] INT NOT NULL PRIMARY KEY,
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
 	[Name] nvarchar(200),
 	[SettlementAccount] nvarchar(10),
 	[PhoneNumber] nvarchar(11),
