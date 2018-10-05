@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Enrollment.aspx.cs" Inherits="TeamDaze.Web.Pages.Enrollment" %>
+﻿<%@ Page Async="true" Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Enrollment.aspx.cs" Inherits="TeamDaze.Web.Pages.Enrollment" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <!-- page title -->
@@ -60,6 +60,14 @@
 
                         
                     </div>
+
+                    <div class="form-group">
+                            <div class="col-md-12 col-sm-12">
+                                <label>Enter BVN</label>
+                                <asp:TextBox ID="txtOtp" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtOtp" ErrorMessage="*" InitialValue="" ForeColor="Red"></asp:RequiredFieldValidator>
+                            </div>
+                        </div>
 
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">

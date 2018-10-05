@@ -1838,6 +1838,7 @@
     <Content Include="assets\plugins\nestable\README.md" />
     <Content Include="assets\plugins\styleswitcher\color_schemes\color_scheme.fla" />
     <Content Include="Default.Master" />
+    <Content Include="Pages\Enrollment.aspx" />
     <Content Include="PopCalendar2005\Thumbs.db" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Pages\TransactionsHistory.aspx" />
@@ -1949,6 +1950,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Enrollment.aspx.cs">
+      <DependentUpon>Enrollment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Enrollment.aspx.designer.cs">
+      <DependentUpon>Enrollment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\TransactionsHistory.aspx.cs">
       <DependentUpon>TransactionsHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2003,6 +2011,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TeamDaze.Api\TeamDaze.Api.csproj">
+      <Project>{126bd73d-69d1-405f-8aac-e057d2c03c26}</Project>
+      <Name>TeamDaze.Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TeamDaze.BLL\TeamDaze.BLL.csproj">
       <Project>{8456AB18-354F-40D6-8BE5-24D4A8F68C2F}</Project>
       <Name>TeamDaze.BLL</Name>

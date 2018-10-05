@@ -65,6 +65,7 @@
     <Build Include="dbo\Tables\Customer.sql" />
     <Build Include="dbo\Tables\Transaction.sql" />
     <Build Include="dbo\Tables\InecReg.sql" />
+    <Build Include="dbo\Tables\Otp.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TeamDaze.DB.David.publish.publish.xml" />
