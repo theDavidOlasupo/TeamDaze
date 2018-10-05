@@ -1712,6 +1712,7 @@
     <Content Include="Content\Images\picture5.jpg" />
     <Content Include="Content\Images\picture8.jpg" />
     <Content Include="Content\Site.css" />
+    <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1837,7 +1838,10 @@
     <Content Include="assets\plugins\knob\README.md" />
     <Content Include="assets\plugins\nestable\README.md" />
     <Content Include="assets\plugins\styleswitcher\color_schemes\color_scheme.fla" />
-    <Content Include="Default.Master" />
+    <Content Include="Pages\ConfirmReg.aspx" />
+    <Content Include="Pages\Enrollment.aspx" />
+    <Content Include="Pages\InecReg.aspx" />
+    <Content Include="Pages\SubmitPayment.aspx" />
     <Content Include="PopCalendar2005\Thumbs.db" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Pages\TransactionsHistory.aspx" />
@@ -1939,15 +1943,41 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.Master.cs">
-      <DependentUpon>Default.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.Master.designer.cs">
-      <DependentUpon>Default.Master</DependentUpon>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ConfirmReg.aspx.cs">
+      <DependentUpon>ConfirmReg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ConfirmReg.aspx.designer.cs">
+      <DependentUpon>ConfirmReg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Enrollment.aspx.cs">
+      <DependentUpon>Enrollment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Enrollment.aspx.designer.cs">
+      <DependentUpon>Enrollment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InecReg.aspx.cs">
+      <DependentUpon>InecReg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\InecReg.aspx.designer.cs">
+      <DependentUpon>InecReg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SubmitPayment.aspx.cs">
+      <DependentUpon>SubmitPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SubmitPayment.aspx.designer.cs">
+      <DependentUpon>SubmitPayment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\TransactionsHistory.aspx.cs">
       <DependentUpon>TransactionsHistory.aspx</DependentUpon>

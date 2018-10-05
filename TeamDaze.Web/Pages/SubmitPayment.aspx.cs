@@ -7,9 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using SourceAFIS.Templates;
-using SourceAFIS.General;
-using SourceAFIS.Simple;
+
 using System.Drawing.Imaging;
 using Neurotec.Biometrics;
 using TeamDaze.Api.DTO;
@@ -28,7 +26,6 @@ namespace TeamDaze.Web.Pages
     {
         Nffv _engine;
         
-        static AfisEngine Afis = new AfisEngine();
         string dbName = "FingerprintDB.CSharpSample.dat";
         string password = "";
         string scanner = "Nitgen";
