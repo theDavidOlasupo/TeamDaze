@@ -68,5 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="TeamDaze.DB.David.publish.publish.xml" />
+    <None Include="TeamDaze.DB.Azeez.publish.publish.xml" />
   </ItemGroup>
 </Project>

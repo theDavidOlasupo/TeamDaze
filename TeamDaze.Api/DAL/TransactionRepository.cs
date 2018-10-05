@@ -13,7 +13,7 @@ namespace TeamDaze.Api.DAL
         //get trxn
         //mail trxn
         private static string ConString = ConfigurationManager.AppSettings["DbCon"];
-        public void LogTrxn(string CustomerId,string FromAccount, string ToAccount, int MerchantId, string Amount, string Status)
+        public void LogTrxn(string CustomerId, string FromAccount, string ToAccount, int MerchantId, string Amount, string Status)
         {
             try
             {
@@ -37,7 +37,7 @@ namespace TeamDaze.Api.DAL
 
         }
 
-        public List<TransactionDto> GetCustomerTransactions(int CustomerId, DateTime ToDate, DateTime Fromdate, int isCust)
+        public List<BLL.DTO.TransactionDto> GetCustomerTransactions(int CustomerId, DateTime ToDate, DateTime Fromdate, int isCust)
         {
             try
             {
@@ -53,21 +53,21 @@ namespace TeamDaze.Api.DAL
                 var ds = c.Select();
                 if (ds != null && ds.Tables[0].Rows.Count > 0)
                 {
-                    var list = Helper.ConvertDataTable<TransactionDto>(ds.Tables[0]);
+                    var list = Helper.ConvertDataTable<BLL.DTO.TransactionDto>(ds.Tables[0]);
                     return list;
                 }
                 else
                 {
                     // new ErrorLog("Get Customer error: " + ex.ToString());
-                    List<TransactionDto> lt = new List<TransactionDto>();
+                    List<BLL.DTO.TransactionDto> lt = new List<BLL.DTO.TransactionDto>();
                     return lt;
                 }
 
             }
             catch (Exception ex)
             {
-                 new ErrorLog("Get trxn Customer error: " + ex.ToString());
-                List<TransactionDto> lt = new List<TransactionDto>();
+                new ErrorLog("Get trxn Customer error: " + ex.ToString());
+                List<BLL.DTO.TransactionDto> lt = new List<BLL.DTO.TransactionDto>();
                 return lt;
                 //throw;
             }
@@ -78,11 +78,11 @@ namespace TeamDaze.Api.DAL
         }
 
 
-        public List<TransactionDto> GetMerchantTransactions(string MerchantId, DateTime ToDate, DateTime Fromdate, int isCust)
+        public List<BLL.DTO.TransactionDto> GetMerchantTransactions(Int64 MerchantId, DateTime ToDate, DateTime Fromdate, int isCust)
         {
             try
             {
-                string sql = "select CustomerId,FromAccount, ToAccount, MerchantId, Amount from Transaction where MerchantId=@MerchantId and CONVERT(DATE, CreatedOn) BETWEEN @FromDate AND @ToDate order by CreatedOn desc";
+                string sql = "select CustomerId,FromAccount, ToAccount, MerchantId, Amount, CreatedOn from [Transaction] where MerchantId=@MerchantId and CONVERT(DATE, CreatedOn) BETWEEN @FromDate AND @ToDate order by CreatedOn desc";
 
                 MSQconn c = new MSQconn(ConString);
                 c.SetSQL(sql);
@@ -93,15 +93,20 @@ namespace TeamDaze.Api.DAL
                 //for customer Status is 1
                 //for merchant Status is 0
                 var ds = c.Select();
-                if (ds != null && ds.Tables[0].Rows.Count > 0)
+                if (ds != null)
                 {
-                    var list = Helper.ConvertDataTable<TransactionDto>(ds.Tables[0]);
-                    return list;
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        var list = Helper.ConvertDataTable<BLL.DTO.TransactionDto>(ds.Tables[0]);
+                        return list;
+                    }
+                    else
+                        return null;
                 }
                 else
                 {
                     // new ErrorLog("Get Customer error: " + ex.ToString());
-                    List<TransactionDto> lt = new List<TransactionDto>();
+                    List<BLL.DTO.TransactionDto> lt = new List<BLL.DTO.TransactionDto>();
                     return lt;
                 }
 
@@ -109,7 +114,7 @@ namespace TeamDaze.Api.DAL
             catch (Exception ex)
             {
                 new ErrorLog("Get trxn Customer error: " + ex.ToString());
-                List<TransactionDto> lt = new List<TransactionDto>();
+                List<BLL.DTO.TransactionDto> lt = new List<BLL.DTO.TransactionDto>();
                 return lt;
                 //throw;
             }

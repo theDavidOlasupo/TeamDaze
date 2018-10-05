@@ -6,14 +6,13 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> Hackathon</title>
+    <title><%: Page.Title %> - Team Daze</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-
-    <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/icon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
 
 </head>
 <body  style="background-image: url(../Content/Images/pic1.png); background-size: cover;">
@@ -38,7 +37,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#ad161f !important">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -46,14 +45,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">BOPP by TeamDaZE</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">LogOut</a></li>
-                        <li><a runat="server" href="~/InecReg">INEC Demo</a></li>
-                    </ul>
+                    <a class="navbar-brand" runat="server" href="~/">Team Daze - Finger Print Print Payment System</a>
                 </div>
             </div>
         </div>
@@ -62,7 +54,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> BOPP ©  </p>
+                <p>&copy; <%: DateTime.Now.Year %> -  Team Daze - Finger Print Print Payment System</p>
             </footer>
         </div>
 
