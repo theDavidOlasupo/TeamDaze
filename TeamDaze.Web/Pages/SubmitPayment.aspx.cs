@@ -181,11 +181,12 @@ namespace TeamDaze.Web.Pages
 
                     CustomerRepository customer = new CustomerRepository();
                     var userDetail = customer.GetCustomer(UserBVN);
-                    if (userDetail.Item1)
+                    var det = userDetail.Item2;
+                    //check if this is a card or bank user
+                    if (userDetail.Item1 && det[0].Status ==2) //2 -card user
                     {
                         //call FlutterWave API & Log transactions
                         //mail user on alert
-                        var det = userDetail.Item2;
                         FlutterChargeCard chargeCard = new FlutterChargeCard
                         {
                             amount = amount.ToString(),
@@ -231,6 +232,30 @@ namespace TeamDaze.Web.Pages
 
 
 
+                    }
+                    else if(userDetail.Item1 && det[0].Status ==3)
+                    {
+                        //bank user
+                        //call the bank API &
+                        //based on the customer's bank code...POST the trxn to their API
+                        BankPayoutReq bankPayout = new BankPayoutReq
+                        {
+                            AcctType = "savings",
+                            Amount = amount.ToString(),
+                            BVN = det[0].BVN,
+                            MerchantID = "",//would always be fixed for any ONE bank..e.g Sterling -101, Polaris- 098
+                            TrxnRef = "Payment:" + UserBVN
+                        };
+                        bool CallHostbank = true; //simulation of calling the host bank
+                        if (CallHostbank)
+                        {
+                            //log the trxn
+                            LogTrxn.LogTrxn(det[0].BVN, det[0].BVN, det[0].PhoneNumber, 100, amount.ToString(), "1");
+                        }
+                        else
+                        {
+                            //ignore this sha
+                        }
                     }
                     else
                     {

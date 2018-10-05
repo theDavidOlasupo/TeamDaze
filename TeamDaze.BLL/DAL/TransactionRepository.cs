@@ -19,6 +19,7 @@ namespace TeamDaze.BLL.DAL
             {
                 string sql = "insert into Transaction(CustomerId,FromAccount, ToAccount, MerchantId, Amount, Status) values (@CustomerId,@FromAccount, @ToAccount,@MerchantId, @Amount, @Status) ";
                 MSQconn c = new MSQconn(ConString);
+                c.SetSQL(sql);
                 c.AddParam("@CustomerId", CustomerId);
                 c.AddParam("@FromAccount", FromAccount);
                 c.AddParam("@ToAccount", ToAccount);
