@@ -165,9 +165,9 @@ namespace TeamDaze.Api.DAL
 
         }
 
-        public BvnSearchResp BvnSearch(string bvn)
+        public BLL.DTO.BvnSearchResp BvnSearch(string bvn)
         {
-            BvnSearchResp bvndetails = new BvnSearchResp();
+           BLL.DTO.BvnSearchResp bvndetails = new BLL.DTO.BvnSearchResp();
 
             try
             {
@@ -196,11 +196,11 @@ namespace TeamDaze.Api.DAL
                 var response = client.Execute(request);
                 //decrypt the response body
                 var responseBody = response.Content.ToString();
-                new ErrorLog(responseBody);
+               // new ErrorLog(responseBody);
                 string decryptedResponse = AES.Decrypt(responseBody, key, iv);
-                bvndetails = new JavaScriptSerializer().Deserialize<BvnSearchResp>(decryptedResponse);
+                bvndetails = new JavaScriptSerializer().Deserialize<BLL.DTO.BvnSearchResp>(decryptedResponse);
                 //log response
-                new ErrorLog(bvndetails.ToString() + "bvn search decrpted response: " + decryptedResponse);
+                //new ErrorLog(bvndetails.ToString() + "bvn search decrpted response: " + decryptedResponse);
 
                 return bvndetails;
             }

@@ -41,12 +41,12 @@ namespace TeamDaze.Api.Controllers
             return resp;
         }
 
-        [WebMethod]
-        public BvnSearchResp BvnSearch(string bvn)
-        {
-            NibssRepository restobj = new NibssRepository();
-            var resp = restobj.BvnSearch(bvn);
-            return resp;
-        }
+        //[WebMethod]
+        //public BvnSearchResp BvnSearch(string bvn)
+        //{
+        //    NibssRepository restobj = new NibssRepository();
+        //    var resp = restobj.BvnSearch(bvn);
+        //    return resp;
+        //}
     }
 }

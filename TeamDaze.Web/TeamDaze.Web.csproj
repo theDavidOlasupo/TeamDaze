@@ -2033,6 +2033,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TeamDaze.Api\TeamDaze.Api.csproj">
+      <Project>{126bd73d-69d1-405f-8aac-e057d2c03c26}</Project>
+      <Name>TeamDaze.Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TeamDaze.BLL\TeamDaze.BLL.csproj">
       <Project>{8456AB18-354F-40D6-8BE5-24D4A8F68C2F}</Project>
       <Name>TeamDaze.BLL</Name>
