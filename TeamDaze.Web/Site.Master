@@ -45,7 +45,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Team Daze - Finger Print Print Payment System</a>
+                    <a class="navbar-brand" runat="server" href="~/">Biometrics Payment System</a>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> -  Team Daze - Finger Print Print Payment System</p>
+                <p>&copy; <%: DateTime.Now.Year %> Biometrics Payment System</p>
             </footer>
         </div>
 
