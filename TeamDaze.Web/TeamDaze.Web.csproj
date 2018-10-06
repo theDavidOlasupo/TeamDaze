@@ -1706,6 +1706,11 @@
     <Content Include="assets\plugins\x-editable\src\inputs\text.js" />
     <Content Include="assets\plugins\x-editable\src\inputs\textarea.js" />
     <Content Include="assets\plugins\x-editable\src\inputs\typeahead.js" />
+    <Content Include="bg.png" />
+    <Content Include="bootstrap-pincode-input.css" />
+    <Content Include="bootstrap-pincode-input.js" />
+    <Content Include="bootstrap.min.css" />
+    <Content Include="close.svg" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -1843,6 +1848,7 @@
     <Content Include="assets\plugins\knob\README.md" />
     <Content Include="assets\plugins\nestable\README.md" />
     <Content Include="assets\plugins\styleswitcher\color_schemes\color_scheme.fla" />
+    <Content Include="main.css" />
     <Content Include="Pages\ConfirmReg.aspx" />
     <Content Include="Pages\Enrollment.aspx" />
     <Content Include="Pages\index.html" />
@@ -1968,6 +1974,7 @@
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
