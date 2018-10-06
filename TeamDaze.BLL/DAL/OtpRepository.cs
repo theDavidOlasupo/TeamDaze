@@ -65,7 +65,7 @@ namespace TeamDaze.BLL.DAL
             int result = 0;
             try
             {
-                string sql = "Update Otp SET IsUsed = 1 WHERE GeneratedOtp = @Otp)";
+                string sql = "Update Otp SET IsUsed = 1 WHERE GeneratedOtp = @Otp";
                 MSQconn c = new MSQconn(ConString);
                 c.SetSQL(sql);
                 c.AddParam("@Otp", Otp);

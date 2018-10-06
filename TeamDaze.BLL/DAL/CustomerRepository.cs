@@ -33,7 +33,8 @@ namespace TeamDaze.BLL.DAL
                 }
                 Customer.CreatedBy = "TeamDaze Admin";
                 string sql = @"insert into Customer (FirstName,LastName,BVN,PhoneNumber,EmailAddress,PanicFinger,CreatedBy,Status,
-                            CreatedOn, EnrollmentType, CardType, CardToken) values (@FirstName,@LastName,@BVN,@PhoneNumber,@EmailAddress,@PanicFinger,@CreatedBy,@Status)";
+                            CreatedOn, EnrollmentType, CardType, CardToken) values (@FirstName,@LastName,@BVN,@PhoneNumber,@EmailAddress,@PanicFinger,@CreatedBy,@Status,
+@CreatedOn, @EnrollmentType, @CardType, @CardToken)";
                 con.SetSQL(sql);
                 con.AddParam("@FirstName", Customer.FirstName);
                 con.AddParam("@LastName", Customer.LastName);
