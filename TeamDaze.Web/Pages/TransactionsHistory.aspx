@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../main.css">
     <link href="https://fonts.googleapis.com/css?family=K2D:200,300,400,500,600,700,800" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="../../bootstrap-pincode-input.css" rel="stylesheet" />
+    <link href="../bootstrap-pincode-input.css" rel="stylesheet" />
 
 </head>
 
@@ -74,7 +74,7 @@
 
                     <tbody>
                        <tr>
-                            <td><%# Eval("CreatedOn").ToString() %></td>
+                            <td><%# Eval("Id").ToString() %></td>
                                         <td><%# Eval("CreatedOn").ToString() %></td>
                                         <td><%# Eval("Amount").ToString() %></td>
                                     </tr>
@@ -97,7 +97,7 @@
             </div>
     </main>
         </form>
-    <script type="text/javascript" src="./bootstrap-pincode-input.js"></script>
+    <script type="text/javascript" src="../bootstrap-pincode-input.js"></script>
     <script>
         $('.otp').pincodeInput({
             // 6 input boxes = code of 6 digits long
@@ -107,7 +107,7 @@
             hidedigits: false,
 
             // keyDown callback             
-            keydown: function (e) {},
+            keydown: function (e) { },
 
             // callback on every input on change (keyup event)
             change: function (input, value, inputnumber) {
@@ -156,4 +156,4 @@
     </script>
 </body>
 
-</html
+</html>

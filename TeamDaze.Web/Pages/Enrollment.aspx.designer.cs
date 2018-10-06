@@ -13,6 +13,24 @@ namespace TeamDaze.Web.Pages {
     public partial class Enrollment {
         
         /// <summary>
+        /// main control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm main;
+        
+        /// <summary>
+        /// formoneaccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl formoneaccount;
+        
+        /// <summary>
         /// txtBVN control.
         /// </summary>
         /// <remarks>
@@ -38,6 +56,15 @@ namespace TeamDaze.Web.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnVerifyBVN;
+        
+        /// <summary>
+        /// formtwoaccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl formtwoaccount;
         
         /// <summary>
         /// txtOtp control.

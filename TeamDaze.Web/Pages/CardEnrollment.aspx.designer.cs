@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TeamDaze.Web {
+namespace TeamDaze.Web.Pages {
     
     
-    public partial class _Default {
+    public partial class CardEnrollment {
         
         /// <summary>
         /// main control.
@@ -22,22 +22,13 @@ namespace TeamDaze.Web {
         protected global::System.Web.UI.HtmlControls.HtmlForm main;
         
         /// <summary>
-        /// drpEnrollmentType control.
+        /// formone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList drpEnrollmentType;
-        
-        /// <summary>
-        /// btnEnrollment control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEnrollment;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl formone;
         
         /// <summary>
         /// cardBVN control.
@@ -94,6 +85,24 @@ namespace TeamDaze.Web {
         protected global::System.Web.UI.WebControls.TextBox txtPin;
         
         /// <summary>
+        /// btnVerifyBVN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVerifyBVN;
+        
+        /// <summary>
+        /// formtwo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl formtwo;
+        
+        /// <summary>
         /// txtOtp control.
         /// </summary>
         /// <remarks>
@@ -110,50 +119,5 @@ namespace TeamDaze.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSubmitCardEnrollment;
-        
-        /// <summary>
-        /// txtaccountBVN control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtaccountBVN;
-        
-        /// <summary>
-        /// btnVerifyBVN control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVerifyBVN;
-        
-        /// <summary>
-        /// formtwoaccount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl formtwoaccount;
-        
-        /// <summary>
-        /// txtaccountOTP control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtaccountOTP;
-        
-        /// <summary>
-        /// btnAccountSubmit control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAccountSubmit;
     }
 }

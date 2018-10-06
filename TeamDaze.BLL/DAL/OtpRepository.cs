@@ -67,8 +67,9 @@ namespace TeamDaze.BLL.DAL
             {
                 string sql = "Update Otp SET IsUsed = 1 WHERE GeneratedOtp = @Otp)";
                 MSQconn c = new MSQconn(ConString);
+                c.SetSQL(sql);
                 c.AddParam("@Otp", Otp);
-                var resp = c.Insert();
+                var resp = c.Update();
                  result = Convert.ToInt32(resp);
             }
             catch (Exception ex)

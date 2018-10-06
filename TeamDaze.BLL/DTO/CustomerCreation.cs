@@ -17,5 +17,8 @@ namespace TeamDaze.BLL.DTO
         public string CreatedBy { get; set; }
         public int Status { get; set; }
         public decimal MaxAmount { get; set; }
+        public string EnrollmentType { get; set; }
+        public string CardType { get; set; }
+        public string CardToken { get; set; }
     }
 }

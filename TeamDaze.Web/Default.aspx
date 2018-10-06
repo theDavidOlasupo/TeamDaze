@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#"  AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TeamDaze.Web._Default" %>
+﻿<%@ Page Async="true" Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TeamDaze.Web._Default" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,76 +8,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
+    <script src="http://localhost:59703/Scripts/jquery-3.3.1.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="./bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css?family=K2D:200,300,400,500,600,700,800" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="./bootstrap-pincode-input.css" rel="stylesheet">
-
 </head>
 
 <body>
-    <main>
-        <div class="container">
-            <div class="header">
-                <h1 class="title">Payment Platform</h1>
+    <form id="main" runat="server">
+        <main>
+            <div class="container">
+                <div class="header">
+                    <h1 class="title">Payment Platform</h1>
+                </div>
+
+                <section class="stats">
+                    <section class="main-stat stat-bottom">
+                        <a href="~/Pages/MakePayment.aspx" runat="server">
+                            <div class="main-circle">
+                                <div class="info-lg">
+                                    <div class="stat-info">
+                                        Accept
+                                   
+                                        <br>
+                                        Payments
+                               
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </section>
+
+                    <section class="main-stat">
+                        <a href="~/Pages/TransactionsHistory.aspx" runat="server">
+                            <div class="main-circle">
+                                <div class="info-lg">
+                                    <div class="stat-info">
+                                        View
+                                   
+                                        <br>
+                                        Transactions
+                               
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </section>
+
+
+                    <section class="main-stat stat-bottom">
+                        <a href="#">
+                            <div class="main-circle jsModalOpen" id="enrollcustomer">
+                                <div class="info-lg">
+                                    <div class="stat-info">
+                                        Enroll
+                                   
+                                        <br>
+                                        Customer
+                               
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </section>
+                </section>
             </div>
 
-            <section class="stats">
-                <section class="main-stat stat-bottom">
-                    <a href="#">
-                        <div class="main-circle">
-                            <div class="info-lg">
-                                <div class="stat-info">
-                                    Accept
-                                    <br>Payments
+
+            <div class="modal-container">
+                <div class="modal modal--sm">
+
+                    <div id="enrollmentType">
+                        <button class="modal__close jsModalClose">
+                            <img src="./close.svg">
+                        </button>
+                        <div class="m-auto">
+                            <div class="text-center">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="form-label">Choose Enrollment Type</label>
+                                            <asp:DropDownList ID="drpEnrollmentType" runat="server" class="form-control custom-select">
+                                                <asp:ListItem Value="Card" Text="Card"></asp:ListItem>
+                                                <asp:ListItem Value="Account" Text="Account"></asp:ListItem>
+                                            </asp:DropDownList>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12" style="margin: auto;">
+                                        <div class="form-group">
+                                            <asp:Button runat="server" class="btn btn-white btn--round" id="btnEnrollment" OnClick="btnEnrollment_Click" Text="Next"/>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </a>
-                </section>
+                    </div>
 
-
-                <section class="main-stat">
-                    <a href="~/Pages/TransactionsHistory.aspx" runat="server">
-                        <div class="main-circle">
-                            <div class="info-lg">
-                                <div class="stat-info">
-                                    View
-                                    <br>Transactions
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </section>
-
-
-                <section class="main-stat stat-bottom">
-                    <a href="#">
-                        <div class="main-circle jsModalOpen">
-                            <div class="info-lg">
-                                <div class="stat-info">
-                                    Enroll
-                                    <br>Customer
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </section>
-            </section>
-        </div>
-
-
-        <div class="modal-container">
-            <div class="modal modal--sm">
-                <div>
-                    <button class="modal__close jsModalClose">
-                        <img src="./close.svg">
-                    </button>
-                    <div class="m-auto">
-                        <div class="text-center">
-                            <form>
+                    <div id="cardenrollment" style="display: none">
+                        <button class="modal__close jsModalClose">
+                            <img src="./close.svg">
+                        </button>
+                        <div class="m-auto">
+                            <div class="text-center">
                                 <div class="form-one">
                                     <div class="row">
 
@@ -85,46 +122,45 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="form-label">BVN</label>
-                                                <input type="text" class="form-control custom-input" placeholder="">
+                                                   <asp:TextBox ID="cardBVN" runat="server" class="form-control custom-input" placeholder=""/>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="form-label">Card type</label>
-                                                <select class="form-control custom-select">
-                                                    <option value="">Verve</option>
-                                                    <option value="">Mastercard</option>
-                                                    <option value="">Option 3</option>
-                                                </select>
+                                                <asp:DropDownList ID="drpCardType" runat="server" class="form-control custom-select">
+                                                    <asp:ListItem Value="Verve" Text="Verve"></asp:ListItem>
+                                                    <asp:ListItem Value="Mastercard" Text="Mastercard"></asp:ListItem>
+                                                </asp:DropDownList>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label class="form-label">Card Number</label>
-                                                <input type="text" class="form-control custom-input" placeholder="">
+                                                <asp:TextBox ID="txtCardNumber" runat="server" class="form-control custom-input" placeholder="" />
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label class="form-label">Expiry Date</label>
-                                                <input type="text" class="form-control custom-input" name="" placeholder="MM/YY">
+                                                <asp:TextBox ID="txtExpiryDate" TextMode="Date" runat="server" class="form-control custom-input" placeholder="" />
                                             </div>
                                         </div>
 
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label class="form-label">CVV</label>
-                                                <input type="text" class="form-control custom-input" name="" placeholder="">
+                                                <asp:TextBox ID="txtCVV" runat="server" class="form-control custom-input" placeholder="" />
                                             </div>
                                         </div>
 
-                                        <div class="col-md-7" style="margin-bottom:10px;">
+                                        <div class="col-md-7" style="margin-bottom: 10px;">
                                             <div class="form-group">
                                                 <label class="form-label">Card PIN</label>
-                                                <input type="text" class="form-control custom-input" placeholder="">
+                                                <asp:TextBox ID="txtPin" TextMode="Password" runat="server" class="form-control" placeholder="" />
                                             </div>
                                         </div>
                                         <div class="col-md-12" style="margin: auto;">
@@ -139,24 +175,69 @@
                                     <label class="form-label single-text">Enter the OTP number you just received.</label>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <input type="text" class="otp" style="display: none;">
+                                            <asp:TextBox ID="txtOtp" runat="server" type="text" class="form-control"/>
                                         </div>
                                     </div>
                                     <div class="col-md-12 text-center">
                                         <div class="form-group">
-                                            <button class="btn btn-white btn--round">Submit</button>
+                                            <asp:Button ID="btnSubmitCardEnrollment" runat="server" class="btn btn-white btn--round" Text="Submit" />
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="accountenrollment" style="display: none">
+                        <button class="modal__close jsModalClose">
+                            <img src="./close.svg">
+                        </button>
+                        <div class="m-auto">
+                            <div class="text-center">
+                                <div class="form-one-account">
+                                    <div class="row">
+
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label">BVN</label>
+                                                <asp:TextBox ID="txtaccountBVN" runat="server" class="form-control custom-input" placeholder=""/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12" style="margin: auto;">
+                                            <div class="form-group">
+                                                 <asp:Button ID="btnVerifyBVN" class="btn btn-white btn--round" Text="Verify BVN" runat="server"
+                                                    OnClick="btnVerifyBVN_Click" CssClass="btn btn-primary"  ValidationGroup="BVNVerification"></asp:Button>
+                                           
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-two-account" id="formtwoaccount" runat="server">
+                                    <label class="form-label single-text">Enter the OTP number you just received.</label>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtaccountOTP" runat="server" type="text" class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                        <div class="form-group">
+                                            <asp:Button ID="btnAccountSubmit" runat="server" class="btn btn-white btn--round" Text="Submit" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
-    </main>
+        </main>
+    </form>
     <script type="text/javascript" src="./bootstrap-pincode-input.js"></script>
     <script>
         $('.otp').pincodeInput({
@@ -167,7 +248,7 @@
             hidedigits: false,
 
             // keyDown callback             
-            keydown: function (e) {},
+            keydown: function (e) { },
 
             // callback on every input on change (keyup event)
             change: function (input, value, inputnumber) {
@@ -199,11 +280,39 @@
             $body.removeClass('modal-is-open')
         })
         $('.form-two').hide()
+         $('.form-two-account').hide()
         $('#next').click(function (e) {
             e.preventDefault()
             $('.form-two').show()
             $('.form-one').hide()
         })
+
+          $('#accountNext').click(function (e) {
+            e.preventDefault()
+            $('.form-two-account').show()
+              $('.form-one-account').hide()
+              return true
+          })
+
+
+        $('#enrollcustomer').click(function (e) {
+            $('#cardenrollment').hide()
+            $('#accountenrollment').hide()
+            $('#enrollmentType').show()
+        });
+
+        $('#btnEnrollment').click(function (e) {
+            if ($('#drpEnrollmentType').val() == "Card") {
+                $('#cardenrollment').show()
+                $('#enrollmentType').hide()
+                 $('#accountenrollment').hide()
+            }
+            else {
+                 $('#accountenrollment').show()
+                  $('#cardenrollment').hide()
+                $('#enrollmentType').hide()
+            }
+        });
     </script>
 
     <!-- <script>

@@ -32,7 +32,8 @@ namespace TeamDaze.BLL.DAL
                     Customer.MaxAmount = Convert.ToDecimal(ConfigurationManager.AppSettings["DefaultMaxAmount"]);
                 }
                 Customer.CreatedBy = "TeamDaze Admin";
-                string sql = "insert into Customer (FirstName,LastName,BVN,PhoneNumber,EmailAddress,PanicFinger,CreatedBy,Status) values (@FirstName,@LastName,@BVN,@PhoneNumber,@EmailAddress,@PanicFinger,@CreatedBy,@Status)";
+                string sql = @"insert into Customer (FirstName,LastName,BVN,PhoneNumber,EmailAddress,PanicFinger,CreatedBy,Status,
+                            CreatedOn, EnrollmentType, CardType, CardToken) values (@FirstName,@LastName,@BVN,@PhoneNumber,@EmailAddress,@PanicFinger,@CreatedBy,@Status)";
                 con.SetSQL(sql);
                 con.AddParam("@FirstName", Customer.FirstName);
                 con.AddParam("@LastName", Customer.LastName);
@@ -43,6 +44,11 @@ namespace TeamDaze.BLL.DAL
                 con.AddParam("@CreatedBy", Customer.CreatedBy);
                 con.AddParam("@MaxAmount", Customer.MaxAmount);
                 con.AddParam("@Status", 1);
+                con.AddParam("@CreatedOn", DateTime.Now);
+                con.AddParam("@EnrollmentType", Customer.EnrollmentType);
+                con.AddParam("@CardType", Customer.CardType);
+                con.AddParam("@CardToken", Customer.CardToken);
+
 
                 var resp = con.Insert();
                 int r = Convert.ToInt16(resp);

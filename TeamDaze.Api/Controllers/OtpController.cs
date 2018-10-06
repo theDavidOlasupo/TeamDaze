@@ -32,8 +32,8 @@ namespace TeamDaze.Api.Controllers
         }
 
         [HttpPost]
-        [Route("")]
-        public async Task<IApiResponse<int>> Update(string otp)
+        [Route("Validate")]
+        public async Task<IApiResponse<int>> Update([FromBody]string otp)
         {
             int result = otpRepository.Update(otp);
 

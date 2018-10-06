@@ -30,33 +30,35 @@ namespace TeamDaze.Web.Pages
            //var resp= nibssRepository.BvnSearch(txtBVN.Text);
 
             var bvnSearchResponse = await new ApiRequest(EndpointUrl).MakeHttpClientRequest(null, ApiRequest.Verbs.GET, null);
-            if (bvnSearchResponse.StatusCode == System.Net.HttpStatusCode.OK)
+            if (bvnSearchResponse.StatusCode == System.Net.HttpStatusCode.InternalServerError)
             {
-                responseString = await bvnSearchResponse.Content.ReadAsStringAsync();
-                DefaultApiReponse<BvnSearchResp> response = Newtonsoft.Json.JsonConvert.DeserializeObject<DefaultApiReponse<BvnSearchResp>>(responseString);
+                /* responseString = await bvnSearchResponse.Content.ReadAsStringAsync();
+                 DefaultApiReponse<BvnSearchResp> response = Newtonsoft.Json.JsonConvert.DeserializeObject<DefaultApiReponse<BvnSearchResp>>(responseString);
+                 Session["BvnSearchResp"] = response.Object;
+                 string Otp = rnd.Next(0, 9999).ToString("D4");
+                 string phoneNo = response.Object.PhoneNumber1;
+                 // creates a number between 1 and 12;
 
-                string Otp = rnd.Next(0, 9999).ToString("D4");
-                string phoneNo = response.Object.PhoneNumber1;
-                // creates a number between 1 and 12;
+                 //Save Otp
+                 EndpointUrl = $"{BaseUrl}/api/otp";
 
-                //Save Otp
-                EndpointUrl = $"{BaseUrl}/api/otp";
+                 OtpRequest otpRequest = new OtpRequest
+                 {
+                     Bvn = txtBVN.Text,
+                     Otp = Otp
+                 };
 
-                OtpRequest otpRequest = new OtpRequest
-                {
-                    Bvn = txtBVN.Text,
-                    Otp = Otp
-                };
+                 var headers = new Dictionary<string, string>();
+                 var r = await new ApiRequest(EndpointUrl).MakeHttpClientRequest(otpRequest, ApiRequest.Verbs.POST, headers);
 
-                var headers = new Dictionary<string, string>();
-                var r = await new ApiRequest(EndpointUrl).MakeHttpClientRequest(otpRequest, ApiRequest.Verbs.POST, headers);
+                 if (r.StatusCode == System.Net.HttpStatusCode.OK)
+                 {
+                     responseString = await r.Content.ReadAsStringAsync();
 
-                if (r.StatusCode == System.Net.HttpStatusCode.OK)
-                {
-                    responseString = await r.Content.ReadAsStringAsync();
-
-                    EmailSender.SendMail(response.Object.Email, Otp);
-                }
+                     EmailSender.SendMail(response.Object.Email, Otp);
+                 }*/
+                formoneaccount.Visible = false;
+                formtwoaccount.Visible = true;
             }
 
             //Rand 
@@ -88,7 +90,7 @@ namespace TeamDaze.Web.Pages
                 }
                 else
                 {
-                    EndpointUrl = $"{BaseUrl}/api/otp";
+                    EndpointUrl = $"{BaseUrl}/api/otp/Validate";
                     var ValidateOtpResponse = await new ApiRequest(EndpointUrl).MakeHttpClientRequest(txtOtp.Text, ApiRequest.Verbs.POST, null);
 
                     if (ValidateOtpResponse.StatusCode == System.Net.HttpStatusCode.OK)
@@ -98,6 +100,22 @@ namespace TeamDaze.Web.Pages
                         if (ValidationResponse.Object == 1)
                         {
                             //trigger thumbprint reader
+                            //Save to DB
+                            CustomerRepository customerRepository = new CustomerRepository();
+                            BvnSearchResp custObj = (BvnSearchResp)Session["BvnSearchResp"];
+                            customerRepository.CreateCustomer(new CustomerCreation
+                            {
+                                BVN = custObj.BVN,
+                                EmailAddress = custObj.Email,
+                                FirstName = custObj.FirstName,
+                                LastName = custObj.LastName,
+                                PhoneNumber = custObj.PhoneNumber1,
+                                CardToken = null,
+                                CardType = null,
+                                EnrollmentType = "Account",
+                                PanicFinger = "",
+                                MaxAmount = 100000000000                                
+                            });
                         }
                     }
                 }
