@@ -25,41 +25,41 @@
                     <h1 class="title">Card Enrollment</h1>
                 </div>
             </div>
-            <div id="Alertdiv" runat="server" visible="false" class="alert alert-success alert-dismissable">
+                <div id="Alertdiv" runat="server" visible="false" class="alert alert-success alert-dismissable">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>Message:</strong> Read the response below!
             </div>
+
 
             <div class="modal text-center">
                 <div id="accountenrollment">
                     <div class="m-auto">
                         <div class="text-center">
                             <div class="form-one" id="formone" runat="server">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="form-label">BVN</label>
-                                            <asp:TextBox ID="cardBVN" runat="server" class="form-control custom-input" placeholder="" />
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label">BVN</label>
+                                                   <asp:TextBox ID="cardBVN" runat="server" class="form-control custom-input" placeholder=""/>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="form-label">Card type</label>
-                                            <asp:DropDownList ID="drpCardType" runat="server" class="form-control custom-select">
-                                                <asp:ListItem Value="Verve" Text="Verve"></asp:ListItem>
-                                                <asp:ListItem Value="Mastercard" Text="Mastercard"></asp:ListItem>
-                                                <asp:ListItem Value="VISA" Text="VISA"></asp:ListItem>
-                                            </asp:DropDownList>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Card type</label>
+                                                <asp:DropDownList ID="drpCardType" runat="server" class="form-control custom-select">
+                                                    <asp:ListItem Value="Verve" Text="Verve"></asp:ListItem>
+                                                    <asp:ListItem Value="Mastercard" Text="Mastercard"></asp:ListItem>
+                                                </asp:DropDownList>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="form-label">Card Number</label>
-                                            <asp:TextBox ID="txtCardNumber" runat="server" class="form-control custom-input" placeholder="" />
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label">Card Number</label>
+                                                <asp:TextBox ID="txtCardNumber" runat="server" class="form-control custom-input" placeholder="" />
+                                            </div>
                                         </div>
-                                    </div>
 
                                         <div class="col-md-4">
                                             <div class="form-group">
@@ -67,36 +67,43 @@
                                                 <asp:TextBox ID="txtExpiryDate" runat="server" class="form-control custom-input" placeholder="MM/YY" />
                                             </div>
                                         </div>
-                                    </div>
 
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label class="form-label">CVV</label>
+                                                <asp:TextBox ID="txtCVV" runat="server" class="form-control custom-input" placeholder="" MaxLength="3" />
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="col-md-7" style="margin-bottom: 10px;">
-                                        <div class="form-group">
-                                            <label class="form-label">Card PIN</label>
-                                            <asp:TextBox ID="txtPin" TextMode="Password" runat="server" class="form-control" placeholder="" />
+                                        <div class="col-md-7" style="margin-bottom: 10px;">
+                                            <div class="form-group">
+                                                <label class="form-label">Card PIN</label>
+                                                <asp:TextBox ID="txtPin" TextMode="Password" runat="server" class="form-control" placeholder="" />
+                                            </div>
                                         </div>
+                                        <div class="col-md-12" style="margin: auto;">
+                                            <div class="form-group text-center">
+                                               <asp:Button ID="btnVerifyBVN" class="btn btn-white btn--round" Text="Verify BVN" runat="server"
                                                 OnClick="btnVerifyBVN_Click" CssClass="btn btn-primary" ValidationGroup="BVNVerification"></asp:Button>
-
+                                       
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="form-two" id="formtwo" runat="server" visible="false">
-                                <label class="form-label single-text">Enter the OTP you just received.</label>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <asp:TextBox ID="txtOtp" runat="server" type="text" class="form-control" />
+                               <div class="form-two" id="formtwo" runat="server" visible="false">
+                                    <label class="form-label single-text">Enter the OTP number you just received.</label>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <asp:TextBox ID="txtOtp" runat="server" type="text" class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 text-center">
+                                        <div class="form-group">
+                                            <asp:Button ID="btnSubmitCardEnrollment" runat="server" class="btn btn-white btn--round" Text="Submit OTP" OnClick="btnValidateOtp_Click" />
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 text-center">
-                                    <div class="form-group">
-                                        <asp:Button ID="btnSubmitCardEnrollment" runat="server" class="btn btn-white btn--round" Text="Submit" />
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -173,7 +180,7 @@
         //        $('#cardenrollment').hide()
         //        $('#enrollmentType').hide()
         //    }
-        });
+        //});
     </script>
 
     <!-- <script>

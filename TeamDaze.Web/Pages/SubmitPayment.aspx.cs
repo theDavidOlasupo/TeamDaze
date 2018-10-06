@@ -12,6 +12,7 @@ using System.Drawing.Imaging;
 using Neurotec.Biometrics;
 using TeamDaze.BLL.DTO;
 using TeamDaze.BLL.DAL;
+using TeamDaze.Web.UranusCore;
 
 namespace TeamDaze.Web.Pages
 {
@@ -25,8 +26,8 @@ namespace TeamDaze.Web.Pages
     public partial class SubmitPayment : System.Web.UI.Page
     {
         Nffv _engine;
-        
-        string dbName = "FingerprintDB.CSharpSample.dat";
+        UranusCore.UranusCoreClient client = new UranusCore.UranusCoreClient();
+
         string password = "";
         string scanner = "Nitgen";
         protected void Page_Load(object sender, EventArgs e)
@@ -169,9 +170,8 @@ namespace TeamDaze.Web.Pages
                 decimal amount = Convert.ToDecimal(txtAmount.Text.ToString());
                 string mailbody = "";
                 string subject = "";
-                // var response = client.Search();
-                //if (response.ResponseCode == BFSClientReturnErrorCode.HIT_CONFIRMED)
-                if (true)
+                 var response = client.Search();
+                if (response.ResponseCode == BFSClientReturnErrorCode.HIT_CONFIRMED)
                 {
                      mailbody = "Dear Customer, This is an alert for the payment you just made on Touch 'N' Pay platform Amount ";
                     mailbody += "Amount:" + amount.ToString() + "Naira <br> If you did not carry out this transaction kindly contact us at teamdaze43@gmail.com or 08105931866";
@@ -179,12 +179,12 @@ namespace TeamDaze.Web.Pages
                     mailTrxn.SendMailAlerts("davniyi3@gmail.com", mailbody, subject);
                     string UserBVN = "";
                     TransactionRepository LogTrxn = new TransactionRepository();
-                    UserBVN = "";// response.PersonFoundID;
+                    UserBVN =  response.PersonFoundID;
                     string merchantAPI = "";
 
-                    //get the user's details with the userID
-                    CustomerCreation customerDetails = new CustomerCreation();
-                    UserBVN = customerDetails.BVN;
+                    ////get the user's details with the userID
+                    //CustomerCreation customerDetails = new CustomerCreation();
+                    //UserBVN = customerDetails.BVN;
 
                     CustomerRepository customer = new CustomerRepository();
                     var userDetail = customer.GetCustomer(UserBVN);
@@ -219,8 +219,13 @@ namespace TeamDaze.Web.Pages
                             //100 is the test merchant ID
                             //1 is the status for a successful trxn
                             LogTrxn.LogTrxn(det[0].BVN, det[0].BVN, det[0].PhoneNumber, 100, amount.ToString(), "1");
-                            //Alertdiv.InnerText = "Payment Succesful";
-                            //Alertdiv.Visible = true;
+                            Alertdiv.InnerText = "Payment Succesful";
+                            Alertdiv.Visible = true;
+                            mailbody = "Hi there, This is an alert for the payment you just made on Touch 'N' Pay platform Amount ";
+                            mailbody += "Amount:" + amount.ToString() + "Naira <br> If you did not carry out this transaction kindly contact us at teamdaze43@gmail.com or 08105931866";
+                            subject = "Touch 'N' Pay Transaction Alert";
+                            mailTrxn.SendMailAlerts(det[0].EmailAddress, mailbody, subject);
+
                             return;
                         }
                         else
@@ -233,8 +238,8 @@ namespace TeamDaze.Web.Pages
                             mailbody += "Amount:" + amount.ToString() + "Naira <br> If you did not carry out this transaction kindly contact us at teamdaze43@gmail.com or 08105931866";
                              subject = "Touch 'N' Pay Transaction Alert";
                             mailTrxn.SendMailAlerts(det[0].EmailAddress, mailbody, subject);
-                            //Alertdiv.InnerText = "Payment Failed";
-                            //Alertdiv.Visible = true;
+                            Alertdiv.InnerText = "Payment Failed";
+                            Alertdiv.Visible = true;
                             Response.Write("<script language='javascript'>alert('Payment Failed');</script>");
                             return;
                         }

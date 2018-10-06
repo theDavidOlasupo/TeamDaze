@@ -20,12 +20,12 @@ namespace TeamDaze.BLL.DAL
         {
             try
             {
-                var duplicate = ValidateDuplicateEnrollment(Customer.BVN);
-                if (duplicate)
-                {
-                    List<CustomerCreation> lt = new List<CustomerCreation>();
-                    return Tuple.Create(false, lt);
-                }
+                //var duplicate = ValidateDuplicateEnrollment(Customer.BVN);
+                //if (duplicate)
+                //{
+                //    List<CustomerCreation> lt = new List<CustomerCreation>();
+                //    return Tuple.Create(false, lt);
+                //}
                 MSQconn con = new MSQconn(ConString);
                 if(Customer.MaxAmount < 0)
                 {
