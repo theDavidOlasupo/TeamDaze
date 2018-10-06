@@ -7,7 +7,7 @@ using System.Web;
 namespace TeamDaze.BLL.DAL
 {
 
-    class ErrorLog
+   public class ErrorLog
     {
 
         public ErrorLog(Exception ex)

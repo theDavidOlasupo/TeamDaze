@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="col-md-12 text-center">
                                     <div class="form-group">
-                                        <asp:Button ID="btnSubmitCardEnrollment" runat="server" class="btn btn-white btn--round" Text="Submit" />
+                                        <asp:Button ID="btnSubmitCardEnrollment" runat="server" class="btn btn-white btn--round" Text="Submit" OnClick="btnValidateOtp_Click" />
                                     </div>
                                 </div>
                             </div>
