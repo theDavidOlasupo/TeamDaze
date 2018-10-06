@@ -165,11 +165,13 @@ namespace TeamDaze.Web.Pages
                     return;
                 }
 
+              TeamDaze.BLL.DAL.Sendmail mailTrxn = new Sendmail();
                 decimal amount = Convert.ToDecimal(txtAmount.Text.ToString());
-               // var response = client.Search();
+                // var response = client.Search();
                 //if (response.ResponseCode == BFSClientReturnErrorCode.HIT_CONFIRMED)
-                if(true)
+                if (true)
                 {
+                    mailTrxn.SendMailAlerts("400", "davniyi3@gmail.com");
                     string UserBVN = "";
                     TransactionRepository LogTrxn = new TransactionRepository();
                     UserBVN = "";// response.PersonFoundID;
@@ -221,6 +223,8 @@ namespace TeamDaze.Web.Pages
                             //failed
                             //0 is the status for a successful trxn
                             LogTrxn.LogTrxn(det[0].BVN, det[0].BVN, det[0].PhoneNumber, 100, amount.ToString(), "0");
+                            // SendMail()
+                            mailTrxn.SendMailAlerts(amount.ToString(), det[0].EmailAddress);
                             Alertdiv.InnerText = "Payment Failed";
                             Alertdiv.Visible = true;
                             Response.Write("<script language='javascript'>alert('Payment Failed');</script>");

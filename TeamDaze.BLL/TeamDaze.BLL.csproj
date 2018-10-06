@@ -54,6 +54,7 @@
     <Compile Include="DAL\CustomerRepository.cs" />
     <Compile Include="DAL\ErrorLog.cs" />
     <Compile Include="DAL\InecRepository.cs" />
+    <Compile Include="DAL\MailAlert.cs" />
     <Compile Include="DAL\MerchantRepository.cs" />
     <Compile Include="DAL\MSQconn.cs" />
     <Compile Include="DAL\NibssRepository.cs" />
