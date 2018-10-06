@@ -154,24 +154,29 @@ namespace TeamDaze.Web.Pages
         //    //return Base64Image;
         //}
         //process payment
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btnMakePayment_Click(object sender, EventArgs e)
         {
             try
             {
                 if (txtAmount.Text == "")
                 {
-                    Alertdiv.InnerText = "ENTER AN AMOUNT !!!";
-                    Alertdiv.Visible = true;
+                    //Alertdiv.InnerText = "ENTER AN AMOUNT !!!";
+                    //Alertdiv.Visible = true;
                     return;
                 }
 
               TeamDaze.BLL.DAL.Sendmail mailTrxn = new Sendmail();
                 decimal amount = Convert.ToDecimal(txtAmount.Text.ToString());
+                string mailbody = "";
+                string subject = "";
                 // var response = client.Search();
                 //if (response.ResponseCode == BFSClientReturnErrorCode.HIT_CONFIRMED)
                 if (true)
                 {
-                    mailTrxn.SendMailAlerts("400", "davniyi3@gmail.com");
+                     mailbody = "Dear Customer, This is an alert for the payment you just made on Touch 'N' Pay platform Amount ";
+                    mailbody += "Amount:" + amount.ToString() + "Naira <br> If you did not carry out this transaction kindly contact us at teamdaze43@gmail.com or 08105931866";
+                    subject = "Touch 'N' Pay Transaction Alert";
+                    mailTrxn.SendMailAlerts("davniyi3@gmail.com", mailbody, subject);
                     string UserBVN = "";
                     TransactionRepository LogTrxn = new TransactionRepository();
                     UserBVN = "";// response.PersonFoundID;
@@ -214,8 +219,8 @@ namespace TeamDaze.Web.Pages
                             //100 is the test merchant ID
                             //1 is the status for a successful trxn
                             LogTrxn.LogTrxn(det[0].BVN, det[0].BVN, det[0].PhoneNumber, 100, amount.ToString(), "1");
-                            Alertdiv.InnerText = "Payment Succesful";
-                            Alertdiv.Visible = true;
+                            //Alertdiv.InnerText = "Payment Succesful";
+                            //Alertdiv.Visible = true;
                             return;
                         }
                         else
@@ -224,9 +229,12 @@ namespace TeamDaze.Web.Pages
                             //0 is the status for a successful trxn
                             LogTrxn.LogTrxn(det[0].BVN, det[0].BVN, det[0].PhoneNumber, 100, amount.ToString(), "0");
                             // SendMail()
-                            mailTrxn.SendMailAlerts(amount.ToString(), det[0].EmailAddress);
-                            Alertdiv.InnerText = "Payment Failed";
-                            Alertdiv.Visible = true;
+                             mailbody = "Hi there, This is an alert for the payment you just made on Touch 'N' Pay platform Amount ";
+                            mailbody += "Amount:" + amount.ToString() + "Naira <br> If you did not carry out this transaction kindly contact us at teamdaze43@gmail.com or 08105931866";
+                             subject = "Touch 'N' Pay Transaction Alert";
+                            mailTrxn.SendMailAlerts(det[0].EmailAddress, mailbody, subject);
+                            //Alertdiv.InnerText = "Payment Failed";
+                            //Alertdiv.Visible = true;
                             Response.Write("<script language='javascript'>alert('Payment Failed');</script>");
                             return;
                         }
@@ -263,15 +271,15 @@ namespace TeamDaze.Web.Pages
                     }
                     else
                     {
-                        Alertdiv.InnerText = "I Could Not Get Your details currently, please try again.";
-                        Alertdiv.Visible = true;
+                        //Alertdiv.InnerText = "I Could Not Get Your details currently, please try again.";
+                        //Alertdiv.Visible = true;
                         return;
                     }
                 }
                 else
                 {
-                    Alertdiv.InnerText = "User Does Not Exist On NIBSS Database";
-                    Alertdiv.Visible = true;
+                    //Alertdiv.InnerText = "User Does Not Exist On NIBSS Database";
+                    //Alertdiv.Visible = true;
                     return;
 
                 }

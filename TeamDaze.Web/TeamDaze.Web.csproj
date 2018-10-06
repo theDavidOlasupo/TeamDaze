@@ -200,6 +200,7 @@
     </Content>
     <Content Include="main.css" />
     <Content Include="Pages\CardEnrollment.aspx" />
+    <Content Include="Pages\Confirmation.aspx" />
     <Content Include="Pages\ConfirmReg.aspx" />
     <Content Include="Pages\Enrollment.aspx" />
     <Content Include="Pages\InecReg.aspx" />
@@ -335,6 +336,13 @@
     </Compile>
     <Compile Include="Pages\CardEnrollment.aspx.designer.cs">
       <DependentUpon>CardEnrollment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Confirmation.aspx.cs">
+      <DependentUpon>Confirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Confirmation.aspx.designer.cs">
+      <DependentUpon>Confirmation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\ConfirmReg.aspx.cs">
       <DependentUpon>ConfirmReg.aspx</DependentUpon>

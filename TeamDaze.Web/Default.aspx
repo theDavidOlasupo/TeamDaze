@@ -27,7 +27,7 @@
 
                 <section class="stats">
                     <section class="main-stat stat-bottom">
-                        <a href="~/Pages/MakePayment.aspx" runat="server">
+                        <a href="~/Pages/SubmitPayment.aspx" runat="server">
                             <div class="main-circle">
                                 <div class="info-lg">
                                     <div class="stat-info">

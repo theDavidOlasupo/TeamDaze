@@ -33,15 +33,18 @@ namespace TeamDaze.Api.Controllers
 
         [HttpPost]
         [Route("Validate")]
-        public async Task<IApiResponse<int>> Update([FromBody]string otp)
+        public async Task<IApiResponse<int>> Update(OtpRequest request)
         {
-            int result = otpRepository.Update(otp);
+            int result = otpRepository.Update(request.Otp);
+
+            string message = result != 1 ? "Invalid OTP" : "SUCCESS";
 
             return await HandleApiOperationAsync(async () =>
             {
                 return new DefaultApiReponse<int>
                 {
-                    Object = result
+                    Object = result,
+                    ShortDescription = message
                 };
             });
         }

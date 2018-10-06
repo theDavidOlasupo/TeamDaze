@@ -13,12 +13,30 @@ namespace TeamDaze.Web.Views {
     public partial class MakePayment {
         
         /// <summary>
-        /// WelcomeText control.
+        /// main control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal WelcomeText;
+        protected global::System.Web.UI.HtmlControls.HtmlForm main;
+        
+        /// <summary>
+        /// formoneaccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl formoneaccount;
+        
+        /// <summary>
+        /// btnMakePayment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMakePayment;
     }
 }

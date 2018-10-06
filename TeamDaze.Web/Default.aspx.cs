@@ -25,7 +25,7 @@ namespace TeamDaze.Web
     public partial class _Default : Page
     {
         string BaseUrl = ConfigurationManager.AppSettings["ApiUrl"].ToString();
-        EmailSender sender = new EmailSender();
+        Sendmail mailer = new Sendmail();
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -56,9 +56,9 @@ namespace TeamDaze.Web
             //var resp= nibssRepository.BvnSearch(txtBVN.Text);
 
             var bvnSearchResponse = await new ApiRequest(EndpointUrl).MakeHttpClientRequest(null, ApiRequest.Verbs.GET, null);
-            if (bvnSearchResponse.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+            if (bvnSearchResponse.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                /*responseString = await bvnSearchResponse.Content.ReadAsStringAsync();
+                responseString = await bvnSearchResponse.Content.ReadAsStringAsync();
                 DefaultApiReponse<BvnSearchResp> response = Newtonsoft.Json.JsonConvert.DeserializeObject<DefaultApiReponse<BvnSearchResp>>(responseString);
                 Session["BvnSearchResp"] = response.Object;
                 string Otp = rnd.Next(0, 9999).ToString("D4");
@@ -81,16 +81,11 @@ namespace TeamDaze.Web
                 {
                     responseString = await r.Content.ReadAsStringAsync();
 
-                    EmailSender.SendMail(response.Object.Email, Otp);
-                }*/
+                    //mailer.SendMailAlerts(response.Object.Email, mailbody, "Team Daze - OTP" )
+                    //EmailSender.SendMail(response.Object.Email, Otp);
+                }
                 formtwoaccount.Visible = true;
             }
-
-            //Rand 
-
-
-            //DefaultApiReponse<List<TransactionDto>> response = Newtonsoft.Json.JsonConvert.DeserializeObject<DefaultApiReponse<List<TransactionDto>>>(responseString);
-            //return response.Object;
         }
 
         protected async void btnValidateOtp_Click(object sender, EventArgs e)

@@ -30,7 +30,7 @@
                             <div class="col-md-12 col-sm-12">
                                 <label>Start Date *</label>
 
-                                <asp:TextBox ID="txtStartDate" runat="server" ReadOnly="true" CssClass="form-control" style="width:200px"></asp:TextBox>
+                                <asp:TextBox ID="txtStartDate" runat="server" ReadOnly="true" CssClass="form-control" style="width:200px;display:inline !important;"></asp:TextBox>
                                 <rjs:popcalendar id="StartDate" runat="server" control="txtStartDate"
                                     format="yyyy mm dd" readonly="True" invaliddatemessage="The date value entered is invalid." />
 
@@ -44,7 +44,7 @@
                             <div class="col-md-12 col-sm-12">
                                 <label>End Date *</label>
 
-                                <asp:TextBox ID="txtEndDate" runat="server" ReadOnly="true" CssClass="form-control" style="width:200px"></asp:TextBox>
+                                <asp:TextBox ID="txtEndDate" runat="server" ReadOnly="true" CssClass="form-control" style="width:200px;display:inline !important;"></asp:TextBox>
                                 <rjs:popcalendar id="PopCalendar1" runat="server" control="txtEndDate"
                                     format="yyyy mm dd" readonly="True" invaliddatemessage="The date value entered is invalid." />
 
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group text-center">
                         <div class="col-md-offset-2 col-md-10">
                             <asp:Button ID="btnView" Text="View" runat="server" OnClick="btnView_Click" CssClass="btn btn-primary"></asp:Button>
                         </div>

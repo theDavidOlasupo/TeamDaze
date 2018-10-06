@@ -12,15 +12,13 @@ namespace TeamDaze.BLL.DAL
    
     public class Sendmail
     {
-        public void SendMailAlerts(string Amount, string Receipient)
+        public void SendMailAlerts(string Receipient, string mailbody, string subject)
         {
             string to = Receipient; //To address    
             string from = "teamdaze43@gmail.com"; //From address    
             MailMessage message = new MailMessage(from, to);
 
-            string mailbody = "Hi there, This is an alert for the payment you just made on Touch 'N' Pay platform Amount ";
-            mailbody += "Amount:" + Amount + "Naira <br> If you did not carry out this transaction kindly contact us at teamdaze43@gmail.com or 08105931866";
-            message.Subject = "Touch 'N' Pay Transaction Alert";
+            message.Subject = subject;
             message.Body = mailbody;
             message.BodyEncoding = Encoding.UTF8;
             message.IsBodyHtml = true;

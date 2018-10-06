@@ -61,17 +61,14 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label">Expiry Date</label>
-                                            <asp:TextBox ID="txtExpiryDate" TextMode="Date" runat="server" class="form-control custom-input" placeholder="" />
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="form-label">Expiry Date</label>
+                                                <asp:TextBox ID="txtExpiryDate" runat="server" class="form-control custom-input" placeholder="MM/YY" />
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="form-label">CVV</label>
-                                            <asp:TextBox ID="txtCVV" runat="server" class="form-control custom-input" placeholder="" />
                                         </div>
                                     </div>
 
@@ -80,10 +77,6 @@
                                             <label class="form-label">Card PIN</label>
                                             <asp:TextBox ID="txtPin" TextMode="Password" runat="server" class="form-control" placeholder="" />
                                         </div>
-                                    </div>
-                                    <div class="col-md-12" style="margin: auto;">
-                                        <div class="form-group">
-                                            <asp:Button ID="btnVerifyBVN" class="btn btn-white btn--round" Text="Verify BVN" runat="server"
                                                 OnClick="btnVerifyBVN_Click" CssClass="btn btn-primary" ValidationGroup="BVNVerification"></asp:Button>
 
                                         </div>

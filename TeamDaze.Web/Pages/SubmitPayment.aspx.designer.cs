@@ -13,22 +13,22 @@ namespace TeamDaze.Web.Pages {
     public partial class SubmitPayment {
         
         /// <summary>
-        /// Alertdiv control.
+        /// main control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Alertdiv;
+        protected global::System.Web.UI.HtmlControls.HtmlForm main;
         
         /// <summary>
-        /// Label4 control.
+        /// formoneaccount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl formoneaccount;
         
         /// <summary>
         /// txtAmount control.
@@ -40,12 +40,21 @@ namespace TeamDaze.Web.Pages {
         protected global::System.Web.UI.WebControls.TextBox txtAmount;
         
         /// <summary>
-        /// Button1 control.
+        /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        
+        /// <summary>
+        /// btnMakePayment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMakePayment;
     }
 }

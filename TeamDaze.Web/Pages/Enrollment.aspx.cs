@@ -15,7 +15,7 @@ namespace TeamDaze.Web.Pages
     public partial class Enrollment : System.Web.UI.Page
     {
         string BaseUrl = ConfigurationManager.AppSettings["ApiUrl"].ToString();
-        EmailSender sender = new EmailSender();
+        Sendmail mailer = new Sendmail();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -26,51 +26,45 @@ namespace TeamDaze.Web.Pages
             Random rnd = new Random();
             string EndpointUrl = $"{BaseUrl}/api/nibss/searchbvn?bvn={txtBVN.Text}";
             string responseString = "";
-           // NibssRepository nibssRepository = new NibssRepository();
-           //var resp= nibssRepository.BvnSearch(txtBVN.Text);
+            // NibssRepository nibssRepository = new NibssRepository();
+            //var resp= nibssRepository.BvnSearch(txtBVN.Text);
 
             var bvnSearchResponse = await new ApiRequest(EndpointUrl).MakeHttpClientRequest(null, ApiRequest.Verbs.GET, null);
-            if (bvnSearchResponse.StatusCode == System.Net.HttpStatusCode.InternalServerError)
+            if (bvnSearchResponse.StatusCode == System.Net.HttpStatusCode.OK)
             {
-                /* responseString = await bvnSearchResponse.Content.ReadAsStringAsync();
-                 DefaultApiReponse<BvnSearchResp> response = Newtonsoft.Json.JsonConvert.DeserializeObject<DefaultApiReponse<BvnSearchResp>>(responseString);
-                 Session["BvnSearchResp"] = response.Object;
-                 string Otp = rnd.Next(0, 9999).ToString("D4");
-                 string phoneNo = response.Object.PhoneNumber1;
-                 // creates a number between 1 and 12;
+                responseString = await bvnSearchResponse.Content.ReadAsStringAsync();
+                DefaultApiReponse<BvnSearchResp> response = Newtonsoft.Json.JsonConvert.DeserializeObject<DefaultApiReponse<BvnSearchResp>>(responseString);
+                Session["BvnSearchResp"] = response.Object;
+                string Otp = rnd.Next(0, 9999).ToString("D4");
+                string phoneNo = response.Object.PhoneNumber1;
 
-                 //Save Otp
-                 EndpointUrl = $"{BaseUrl}/api/otp";
+                //Save Otp
+                EndpointUrl = $"{BaseUrl}/api/otp";
 
-                 OtpRequest otpRequest = new OtpRequest
-                 {
-                     Bvn = txtBVN.Text,
-                     Otp = Otp
-                 };
+                OtpRequest otpRequest = new OtpRequest
+                {
+                    Bvn = txtBVN.Text,
+                    Otp = Otp
+                };
 
-                 var headers = new Dictionary<string, string>();
-                 var r = await new ApiRequest(EndpointUrl).MakeHttpClientRequest(otpRequest, ApiRequest.Verbs.POST, headers);
+                var headers = new Dictionary<string, string>();
+                var r = await new ApiRequest(EndpointUrl).MakeHttpClientRequest(otpRequest, ApiRequest.Verbs.POST, headers);
 
-                 if (r.StatusCode == System.Net.HttpStatusCode.OK)
-                 {
-                     responseString = await r.Content.ReadAsStringAsync();
+                if (r.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    responseString = await r.Content.ReadAsStringAsync();
+                   string mailbody = "Dear Customer,<br/><br/> Your One Time OTP is "+ Otp;
 
-                     EmailSender.SendMail(response.Object.Email, Otp);
-                 }*/
+                    mailer.SendMailAlerts(response.Object.Email, mailbody, "Team Daze - One Time Password");
+                }
                 formoneaccount.Visible = false;
                 formtwoaccount.Visible = true;
             }
-
-            //Rand 
-
-
-            //DefaultApiReponse<List<TransactionDto>> response = Newtonsoft.Json.JsonConvert.DeserializeObject<DefaultApiReponse<List<TransactionDto>>>(responseString);
-            //return response.Object;
         }
 
         protected async void btnValidateOtp_Click(object sender, EventArgs e)
         {
-            string EndpointUrl = $"{BaseUrl}/api/otp?otp={txtOtp.Text}";
+            string EndpointUrl = $"{BaseUrl}/api/otp/?otp={txtOtp.Text}";
             var GetOtpResponse = await new ApiRequest(EndpointUrl).MakeHttpClientRequest(null, ApiRequest.Verbs.GET, null);
             if (GetOtpResponse.StatusCode == System.Net.HttpStatusCode.OK)
             {
@@ -91,31 +85,47 @@ namespace TeamDaze.Web.Pages
                 else
                 {
                     EndpointUrl = $"{BaseUrl}/api/otp/Validate";
-                    var ValidateOtpResponse = await new ApiRequest(EndpointUrl).MakeHttpClientRequest(txtOtp.Text, ApiRequest.Verbs.POST, null);
+                    OtpRequest otpRequest = new OtpRequest
+                    {
+                        Bvn = txtBVN.Text,
+                        Otp = txtOtp.Text
+                    };
+                    var ValidateOtpResponse = await new ApiRequest(EndpointUrl).MakeHttpClientRequest(otpRequest, ApiRequest.Verbs.POST, null);
 
                     if (ValidateOtpResponse.StatusCode == System.Net.HttpStatusCode.OK)
                     {
                         string ValidateOTPResponseString = await ValidateOtpResponse.Content.ReadAsStringAsync();
-                        DefaultApiReponse<int> ValidationResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<DefaultApiReponse<int>>(responseString);
+                        DefaultApiReponse<int> ValidationResponse = Newtonsoft.Json.JsonConvert.DeserializeObject<DefaultApiReponse<int>>(ValidateOTPResponseString);
                         if (ValidationResponse.Object == 1)
                         {
                             //trigger thumbprint reader
                             //Save to DB
                             CustomerRepository customerRepository = new CustomerRepository();
                             BvnSearchResp custObj = (BvnSearchResp)Session["BvnSearchResp"];
-                            customerRepository.CreateCustomer(new CustomerCreation
+                            Tuple<bool, List<CustomerCreation>> enrollmentResult = customerRepository.CreateCustomer(new CustomerCreation
                             {
                                 BVN = custObj.BVN,
                                 EmailAddress = custObj.Email,
                                 FirstName = custObj.FirstName,
                                 LastName = custObj.LastName,
                                 PhoneNumber = custObj.PhoneNumber1,
-                                CardToken = null,
-                                CardType = null,
+                                CardToken = "",
+                                CardType = "",
                                 EnrollmentType = "Account",
                                 PanicFinger = "",
-                                MaxAmount = 100000000000                                
+                                MaxAmount = 100000000000,
+
                             });
+
+                            if (enrollmentResult.Item1)
+                            {
+                                Response.Redirect("Confirmation.aspx");
+                            }
+                            else
+                            {
+                                Response.Write("<script language='javascript'>alert('Profile cannot be created');</script>");
+                                return;
+                            }
                         }
                     }
                 }
