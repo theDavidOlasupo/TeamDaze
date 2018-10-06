@@ -1,4 +1,5 @@
 ﻿<%@ Page Async="true" Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="TransactionsHistory.aspx.cs" Inherits="TeamDaze.Web.Pages.TransactionsHistory" %>
+
 <%@ Register Assembly="RJS.Web.WebControl.PopCalendar" Namespace="RJS.Web.WebControl" TagPrefix="rjs" %>
 <html lang="en">
 
@@ -16,87 +17,87 @@
 
 <body>
     <form id="main" runat="server">
-    <main>
-        <div class="container">
-            <div class="header">
-                <h1 class="title">Transaction History</h1>
-            </div>
-
-
-            <div>
-                <div class="table card-table table-vcenter text-nowrap">
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="col-md-12 col-sm-12">
-                                <label>Start Date *</label>
-
-                                <asp:TextBox ID="txtStartDate" runat="server" ReadOnly="true" CssClass="form-control" style="width:200px;display:inline !important;"></asp:TextBox>
-                                <rjs:popcalendar id="StartDate" runat="server" control="txtStartDate"
-                                    format="yyyy mm dd" readonly="True" invaliddatemessage="The date value entered is invalid." />
-
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtStartDate" ErrorMessage="*" InitialValue="" ForeColor="Red"></asp:RequiredFieldValidator>
-
-                            </div>
-                        </div>
-
-
-                        <div class="form-group">
-                            <div class="col-md-12 col-sm-12">
-                                <label>End Date *</label>
-
-                                <asp:TextBox ID="txtEndDate" runat="server" ReadOnly="true" CssClass="form-control" style="width:200px;display:inline !important;"></asp:TextBox>
-                                <rjs:popcalendar id="PopCalendar1" runat="server" control="txtEndDate"
-                                    format="yyyy mm dd" readonly="True" invaliddatemessage="The date value entered is invalid." />
-
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtEndDate" ErrorMessage="*" InitialValue="" ForeColor="Red"></asp:RequiredFieldValidator>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group text-center">
-                        <div class="col-md-offset-2 col-md-10">
-                            <asp:Button ID="btnView" Text="View" runat="server" OnClick="btnView_Click" CssClass="btn btn-primary"></asp:Button>
-                        </div>
-                    </div>
+        <main>
+            <div class="container">
+                <div class="header">
+                    <h1 class="title">Transaction History</h1>
                 </div>
-            <section class="stats">
-
-                <table class="table card-table table-vcenter text-nowrap">
-                    <thead>
-                        <tr>
-                            <th>Transaction ID</th>
-                            <th>Transaction Date</th>
-                            <th>Total Amount</th>
-                        </tr>
-                    </thead>
-                     <asp:ListView ID="lstTransactionHistory" runat="server" ClientIDMode="Static">
-                            <ItemTemplate>
-
-                    <tbody>
-                       <tr>
-                            <td><%# Eval("Id").ToString() %></td>
-                                        <td><%# Eval("CreatedOn").ToString() %></td>
-                                        <td><%# Eval("Amount").ToString() %></td>
-                                    </tr>
-                    </tbody>
-                     </ItemTemplate>
-                        </asp:ListView>
-                        <tfoot>
-                            <tr>
-                                <td>Sum</td>
-                                <td>
-                                    <asp:Label ID="lblTotalSum" runat="server"></asp:Label></td>
-                            </tr>
-                        </tfoot>
-                </table>
 
 
-            </section>
-        </div>
+                <div>
+                    <div class="table card-table table-vcenter text-nowrap">
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-12">
+                                    <label>Start Date *</label>
+
+                                    <asp:TextBox ID="txtStartDate" runat="server" ReadOnly="true" CssClass="form-control" Style="width: 200px; display: inline !important;"></asp:TextBox>
+                                    <rjs:PopCalendar ID="StartDate" runat="server" Control="txtStartDate"
+                                        Format="yyyy mm dd" readonly="True" InvalidDateMessage="The date value entered is invalid." />
+
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtStartDate" ErrorMessage="*" InitialValue="" ForeColor="Red"></asp:RequiredFieldValidator>
+
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-md-12 col-sm-12">
+                                    <label>End Date *</label>
+
+                                    <asp:TextBox ID="txtEndDate" runat="server" ReadOnly="true" CssClass="form-control" Style="width: 200px; display: inline !important;"></asp:TextBox>
+                                    <rjs:PopCalendar ID="PopCalendar1" runat="server" Control="txtEndDate"
+                                        Format="yyyy mm dd" readonly="True" InvalidDateMessage="The date value entered is invalid." />
+
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtEndDate" ErrorMessage="*" InitialValue="" ForeColor="Red"></asp:RequiredFieldValidator>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group text-center">
+                            <div class="col-md-offset-2 col-md-10">
+                                <asp:Button ID="btnView" Text="View" runat="server" OnClick="btnView_Click" CssClass="btn btn-primary"></asp:Button>
+                            </div>
+                        </div>
+                    </div>
+                    <section class="stats">
+
+                        <table class="table card-table table-vcenter text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th>Transaction ID</th>
+                                    <th>Transaction Date</th>
+                                    <th>Total Amount</th>
+                                </tr>
+                            </thead>
+                            <asp:ListView ID="lstTransactionHistory" runat="server" ClientIDMode="Static">
+                                <ItemTemplate>
+
+                                    <tbody>
+                                        <tr>
+                                            <td align="center"><%# Eval("Id").ToString() %></td>
+                                            <td align="center"><%# Eval("CreatedOn").ToString() %></td>
+                                            <td align="center"><%# Eval("Amount").ToString() %></td>
+                                        </tr>
+                                    </tbody>
+                                </ItemTemplate>
+                            </asp:ListView>
+                            <tfoot>
+                                <tr>
+                                    <td align="right" colspan="2">Sum</td>
+                                    <td align="left">
+                                        <asp:Label ID="lblTotalSum" runat="server"></asp:Label></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+
+                    </section>
+                </div>
 
             </div>
-    </main>
-        </form>
+        </main>
+    </form>
     <script type="text/javascript" src="../bootstrap-pincode-input.js"></script>
     <script>
         $('.otp').pincodeInput({

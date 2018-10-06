@@ -20,7 +20,7 @@
 <body>
     <form id="main" runat="server">
         <main>
-            <div class="container">
+            <div class="container flex-direction:column">
                 <div class="header">
                     <h1 class="title">Profile Confirmation</h1>
                 </div>
@@ -33,9 +33,15 @@
                         <div class="text-center">
                                 <div class="row">
                                     <div class="col-md-12">
+                                         <div class="enroll-success" style="display:flex; height: 300px; align-items:center; justify-content:space-between">
+                                        <label class="form-label single-text" style="color: #000">You have successfully enrolled the customer!</label>
+                                        <img src="../check.svg" alt="" width="25" height="25">
+                                    </div>
+                                    <div class="col-md-12 text-center">
                                         <div class="form-group">
-                                            <asp:Label runat="server" class="form-label" Text="Enrollment was successful"/>
+                                            <button class="btn btn-white btn--round jsModalClose">Dismiss</button>
                                         </div>
+                                    </div>
                                     </div>
 
 

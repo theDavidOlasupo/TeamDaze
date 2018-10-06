@@ -19,7 +19,7 @@ namespace TeamDaze.Web.Pages
 
             try
             {
-                DateTime StartDate = Convert.ToDateTime(DateTime.Now.Year + "/" + DateTime.Now.Month + "/01" );
+                DateTime StartDate = Convert.ToDateTime(DateTime.Now.Year + "/" + DateTime.Now.Month + "/01");
                 DateTime EndDate = DateTime.Now;
 
                 var result = await GetTransactions(StartDate, EndDate);
@@ -47,12 +47,30 @@ namespace TeamDaze.Web.Pages
 
         protected async void btnView_Click(object sender, EventArgs e)
         {
-            DateTime FromDate = Convert.ToDateTime(txtStartDate.Text);
-            DateTime ToDate = Convert.ToDateTime(txtStartDate.Text);
-            var transactions = await GetTransactions(FromDate, ToDate);
-            lstTransactionHistory.DataSource = transactions;
-            lstTransactionHistory.DataBind();
+            try
+            {
+                lblTotalSum.Text = "0";
+               lstTransactionHistory.DataSource = null;
+                lstTransactionHistory.DataBind();
+                DateTime FromDate = Convert.ToDateTime(txtStartDate.Text);
+                DateTime ToDate = Convert.ToDateTime(txtStartDate.Text);
+                var transactions = await GetTransactions(FromDate, ToDate);
+
+                if (transactions != null)
+                {
+                    if (transactions.Count > 0)
+                    {
+                        lstTransactionHistory.DataSource = transactions;
+                        lstTransactionHistory.DataBind();
+                        lblTotalSum.Text = transactions.Sum(c => c.Amount).ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
 
         }
     }
-}
+};

@@ -83,7 +83,7 @@ namespace TeamDaze.BLL.DAL
         {
             try
             {
-                string sql = "select Id CustomerId,FromAccount, ToAccount, MerchantId, Amount, CreatedOn from [Transaction] where MerchantId=@MerchantId and CONVERT(DATE, CreatedOn) BETWEEN @FromDate AND @ToDate order by CreatedOn desc";
+                string sql = "select Id, CustomerId,FromAccount, ToAccount, MerchantId, Amount, CreatedOn from [Transaction] where MerchantId=@MerchantId and CONVERT(DATE, CreatedOn) BETWEEN @FromDate AND @ToDate order by CreatedOn desc";
 
                 MSQconn c = new MSQconn(ConString);
                 c.SetSQL(sql);
