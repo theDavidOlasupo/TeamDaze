@@ -71,7 +71,7 @@ namespace TeamDaze.Web.Pages
                         //  responseString = await r.Content.ReadAsStringAsync();
 
                         //EmailSender.SendMail(response.Email, Otp);
-                        mailTrxn.SendMailAlerts(Otp, response.Email);
+                        mailTrxn.SendMailAlerts(response.Email,"Your otp is"+Otp,"Team Daze OTP");
                     }
                 }
                 else
@@ -150,9 +150,9 @@ namespace TeamDaze.Web.Pages
                                 if (CreationResponse.Item1)
                                 {
                                     //created the user, rerturn success response
-                                    var Register = await client.RegisterPersonAsync(sessionID, bvn);
+                                    var Register =  client.RegisterPerson(sessionID, bvn);
 
-                                    client.EndSession(sessionID);
+                                   // client.EndSession(sessionID);
                                     Thread.Sleep(2000);
                                     Alertdiv.InnerText = bvnDetails.FirstName + " " + bvnDetails.LastName + " Was created succesfully on Touch 'N' Go Platform successfully";
                                     Alertdiv.Visible = true;

@@ -24,6 +24,10 @@
                     <h1 class="title">Make Payment</h1>
                 </div>
             </div>
+                <div id="Alertdiv" runat="server" visible="false" class="alert alert-success alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Message:</strong> Read the response below!
+            </div>
 
 
             <div class="modal text-center">
