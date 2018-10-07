@@ -1,5 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Confirmation.aspx.cs" Inherits="TeamDaze.Web.Pages.Confirmation" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TransactionConfirmation.aspx.cs" Inherits="TeamDaze.Web.Pages.TransactionConfirmation" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +21,7 @@
         <main>
             <div class="container flex-direction:column">
                 <div class="header">
-                    <h1 class="title">Profile Confirmation</h1>
+                    <h1 class="title">Transaction Confirmation</h1>
                 </div>
             </div>
 
@@ -31,23 +30,22 @@
                 <div id="accountenrollment">
                     <div class="m-auto">
                         <div class="text-center">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="enroll-success" style="display: flex; height: 300px; align-items: center; justify-content: space-between">
-                                        <label class="form-label single-text" style="color: #000">You have successfully enrolled the customer!</label>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                         <div class="enroll-success" style="display:flex; height: 300px; align-items:center; justify-content:space-between">
+                                        <label class="form-label single-text" style="color: #000">Your transaction was successful!</label>
                                         <img src="../check.svg" alt="" width="25" height="25">
                                     </div>
                                     <div class="col-md-12 text-center">
                                         <div class="form-group">
                                             <asp:Button runat="server" ID="btnHome" class="btn btn-white btn--round" Text="Home" OnClick="btnHome_Click" />
-
                                         </div>
                                     </div>
+                                    </div>
+
+
                                 </div>
-
-
                             </div>
-                        </div>
                     </div>
                 </div>
             </div>

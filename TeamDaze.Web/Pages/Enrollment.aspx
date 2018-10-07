@@ -35,7 +35,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="form-label">BVN</label>
+                                            <label class="form-label">BVN (*556#)</label>
                                             <asp:TextBox ID="txtBVN" runat="server" class="form-control custom-input" placeholder="" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtBVN" ErrorMessage="*"
                                                 InitialValue="" ForeColor="Red" ValidationGroup="BVNVerification"></asp:RequiredFieldValidator>

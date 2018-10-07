@@ -20,7 +20,7 @@
 <body>
     <form id="main" runat="server">
         <main>
-            <div class="container">
+            <div class="containerb
                 <div class="header">
                     <h1 class="title">Card Enrollment</h1>
                 </div>
@@ -39,7 +39,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="form-label">BVN</label>
+                                                <label class="form-label">BVN (*556#)</label>
                                                    <asp:TextBox ID="cardBVN" runat="server" class="form-control custom-input" placeholder=""/>
                                             </div>
                                         </div>

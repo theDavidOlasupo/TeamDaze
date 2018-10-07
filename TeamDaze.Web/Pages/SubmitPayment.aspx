@@ -59,12 +59,32 @@
 
                                     <div class="col-md-12" style="margin: auto;">
                                         <div class="form-group text-center">
-                                            <asp:Button ID="btnMakePayment" class="btn btn-white btn--round" Text="Click To Make Payments" runat="server"
+                                            <asp:Button ID="Button1" class="btn btn-white btn--round" Text="Click To Make Payments" runat="server"
                                                 OnClick="btnMakePayment_Click" CssClass="btn btn-primary"></asp:Button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+                             <%--<div class="form-two-account" id="formtwoaccount" runat="server">
+                                <div class="row">
+                                    
+                                     <div class="col-md-12">
+                                            <div class="form-group">
+                                             <img src="~/fingerprint.png" height="200" width="200" />
+                                            </div>
+                                        </div>
+
+                                   
+
+                                    <div class="col-md-12" style="margin: auto;">
+                                        <div class="form-group text-center">
+                                               <asp:Button ID="Button1" class="btn btn-white btn--round" Text="Click To Make Payments" runat="server"
+                                                OnClick="btnMakePayment_Click" CssClass="btn btn-primary"></asp:Button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>--%>
 
 
                         </div>
@@ -120,8 +140,8 @@
         $('.form-two-account').hide()
         $('#next').click(function (e) {
             e.preventDefault()
-            $('.form-two').show()
-            $('.form-one').hide()
+            $('.form-two-account').show()
+            $('.form-one-account').hide()
         })
 
         $('#accountNext').click(function (e) {

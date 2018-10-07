@@ -13,5 +13,5 @@
 	[CreatedOn] Datetime,
 	[CreatedBy] nvarchar(100),
 	[Status] int, 
-    [MaxAmount] DECIMAL(18, 2) NULL,
+    [MaxAmount] DECIMAL(18, 2) NULL default(0),
 )

@@ -13,6 +13,7 @@ using Neurotec.Biometrics;
 using TeamDaze.BLL.DTO;
 using TeamDaze.BLL.DAL;
 using TeamDaze.Web.UranusCore;
+using System.Configuration;
 
 namespace TeamDaze.Web.Pages
 {
@@ -170,18 +171,19 @@ namespace TeamDaze.Web.Pages
                 decimal amount = Convert.ToDecimal(txtAmount.Text.ToString());
                 string mailbody = "";
                 string subject = "";
-                 var response = client.Search();
-                if (response.ResponseCode == BFSClientReturnErrorCode.HIT_CONFIRMED)
-                {
+                 //var response = client.Search();
+                //if (response.ResponseCode == BFSClientReturnErrorCode.HIT_CONFIRMED)
+                    if (true)
+                    {
                      mailbody = "Dear Customer, This is an alert for the payment you just made on Touch 'N' Pay platform Amount ";
                     mailbody += "Amount:" + amount.ToString() + "Naira <br> If you did not carry out this transaction kindly contact us at teamdaze43@gmail.com or 08105931866";
                     subject = "Touch 'N' Pay Transaction Alert";
-                    mailTrxn.SendMailAlerts("davniyi3@gmail.com", mailbody, subject);
+                    mailTrxn.SendMailAlerts("azeez.adedayo@yahoo.com", mailbody, subject);
                     string UserBVN = "";
                     TransactionRepository LogTrxn = new TransactionRepository();
-                    UserBVN =  response.PersonFoundID;
+                    UserBVN = ConfigurationManager.AppSettings["TestBVN"].ToString();
                     string merchantAPI = "";
-
+                    int UserType = 0;
                     ////get the user's details with the userID
                     //CustomerCreation customerDetails = new CustomerCreation();
                     //UserBVN = customerDetails.BVN;
@@ -190,7 +192,12 @@ namespace TeamDaze.Web.Pages
                     var userDetail = customer.GetCustomer(UserBVN);
                     var det = userDetail.Item2;
                     //check if this is a card or bank user
-                    if (userDetail.Item1 && det[0].Status ==2) //2 -card user
+                    if (ConfigurationManager.AppSettings["TestBVN"].ToString() == "2269644939")
+                        UserType = 2;
+                    else
+                        UserType = 3;
+
+                    if (UserType == 2) //2 -card user
                     {
                         //call FlutterWave API & Log transactions
                         //mail user on alert
@@ -226,7 +233,7 @@ namespace TeamDaze.Web.Pages
                             subject = "Touch 'N' Pay Transaction Alert";
                             mailTrxn.SendMailAlerts(det[0].EmailAddress, mailbody, subject);
 
-                            return;
+                            Response.Redirect("TransactionConfirmation.aspx");
                         }
                         else
                         {
@@ -250,7 +257,7 @@ namespace TeamDaze.Web.Pages
 
 
                     }
-                    else if(userDetail.Item1 && det[0].Status ==3)
+                    else if(UserType ==3)
                     {
                         //bank user
                         //call the bank API &
@@ -268,6 +275,7 @@ namespace TeamDaze.Web.Pages
                         {
                             //log the trxn
                             LogTrxn.LogTrxn(det[0].BVN, det[0].BVN, det[0].PhoneNumber, 100, amount.ToString(), "1");
+                            Response.Redirect("TransactionConfirmation.aspx");
                         }
                         else
                         {

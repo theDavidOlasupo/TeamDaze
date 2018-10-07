@@ -38,6 +38,7 @@ namespace Enrollment
             this.label1 = new System.Windows.Forms.Label();
             this.txtBVN = new System.Windows.Forms.TextBox();
             this.btnProfile = new System.Windows.Forms.Button();
+            this.lblActionDescription = new System.Windows.Forms.Label();
             PromptLabel = new System.Windows.Forms.Label();
             StatusLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Picture)).BeginInit();
@@ -46,7 +47,8 @@ namespace Enrollment
             // PromptLabel
             // 
             PromptLabel.AutoSize = true;
-            PromptLabel.Location = new System.Drawing.Point(266, 12);
+            PromptLabel.ForeColor = System.Drawing.Color.White;
+            PromptLabel.Location = new System.Drawing.Point(288, 69);
             PromptLabel.Name = "PromptLabel";
             PromptLabel.Size = new System.Drawing.Size(43, 13);
             PromptLabel.TabIndex = 1;
@@ -55,7 +57,8 @@ namespace Enrollment
             // StatusLabel
             // 
             StatusLabel.AutoSize = true;
-            StatusLabel.Location = new System.Drawing.Point(266, 65);
+            StatusLabel.ForeColor = System.Drawing.Color.White;
+            StatusLabel.Location = new System.Drawing.Point(266, 101);
             StatusLabel.Name = "StatusLabel";
             StatusLabel.Size = new System.Drawing.Size(40, 13);
             StatusLabel.TabIndex = 3;
@@ -67,9 +70,9 @@ namespace Enrollment
             | System.Windows.Forms.AnchorStyles.Left)));
             this.Picture.BackColor = System.Drawing.SystemColors.Window;
             this.Picture.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.Picture.Location = new System.Drawing.Point(-2, 65);
+            this.Picture.Location = new System.Drawing.Point(-2, 117);
             this.Picture.Name = "Picture";
-            this.Picture.Size = new System.Drawing.Size(248, 342);
+            this.Picture.Size = new System.Drawing.Size(248, 449);
             this.Picture.TabIndex = 0;
             this.Picture.TabStop = false;
             // 
@@ -77,10 +80,10 @@ namespace Enrollment
             // 
             this.Prompt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Prompt.Location = new System.Drawing.Point(269, 28);
+            this.Prompt.Location = new System.Drawing.Point(337, 69);
             this.Prompt.Name = "Prompt";
             this.Prompt.ReadOnly = true;
-            this.Prompt.Size = new System.Drawing.Size(300, 20);
+            this.Prompt.Size = new System.Drawing.Size(322, 20);
             this.Prompt.TabIndex = 2;
             // 
             // StatusText
@@ -89,39 +92,42 @@ namespace Enrollment
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StatusText.BackColor = System.Drawing.SystemColors.Window;
-            this.StatusText.Location = new System.Drawing.Point(269, 94);
+            this.StatusText.Location = new System.Drawing.Point(269, 117);
             this.StatusText.Multiline = true;
             this.StatusText.Name = "StatusText";
             this.StatusText.ReadOnly = true;
             this.StatusText.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.StatusText.Size = new System.Drawing.Size(300, 273);
+            this.StatusText.Size = new System.Drawing.Size(390, 393);
             this.StatusText.TabIndex = 4;
             // 
             // StatusLine
             // 
             this.StatusLine.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.StatusLine.Location = new System.Drawing.Point(9, 357);
+            this.StatusLine.ForeColor = System.Drawing.Color.White;
+            this.StatusLine.Location = new System.Drawing.Point(9, 516);
             this.StatusLine.Name = "StatusLine";
-            this.StatusLine.Size = new System.Drawing.Size(479, 39);
+            this.StatusLine.Size = new System.Drawing.Size(569, 39);
             this.StatusLine.TabIndex = 5;
             this.StatusLine.Text = "[Status line]";
             // 
             // CloseButton
             // 
             this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloseButton.BackColor = System.Drawing.Color.White;
             this.CloseButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CloseButton.Location = new System.Drawing.Point(494, 373);
+            this.CloseButton.Location = new System.Drawing.Point(584, 521);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
             this.CloseButton.TabIndex = 6;
             this.CloseButton.Text = "Close";
-            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 8);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(9, 69);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(57, 13);
             this.label1.TabIndex = 7;
@@ -129,28 +135,42 @@ namespace Enrollment
             // 
             // txtBVN
             // 
-            this.txtBVN.Location = new System.Drawing.Point(146, 5);
+            this.txtBVN.Location = new System.Drawing.Point(106, 69);
             this.txtBVN.Name = "txtBVN";
             this.txtBVN.Size = new System.Drawing.Size(100, 20);
             this.txtBVN.TabIndex = 8;
             // 
             // btnProfile
             // 
-            this.btnProfile.Location = new System.Drawing.Point(301, 373);
+            this.btnProfile.BackColor = System.Drawing.Color.White;
+            this.btnProfile.Location = new System.Drawing.Point(388, 516);
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(158, 23);
             this.btnProfile.TabIndex = 9;
             this.btnProfile.Text = "Save";
-            this.btnProfile.UseVisualStyleBackColor = true;
+            this.btnProfile.UseVisualStyleBackColor = false;
             this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
+            // 
+            // lblActionDescription
+            // 
+            this.lblActionDescription.AutoSize = true;
+            this.lblActionDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActionDescription.ForeColor = System.Drawing.Color.White;
+            this.lblActionDescription.Location = new System.Drawing.Point(13, 13);
+            this.lblActionDescription.Name = "lblActionDescription";
+            this.lblActionDescription.Size = new System.Drawing.Size(86, 31);
+            this.lblActionDescription.TabIndex = 10;
+            this.lblActionDescription.Text = "label2";
             // 
             // CaptureForm
             // 
             this.AcceptButton = this.CloseButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DarkBlue;
             this.CancelButton = this.CloseButton;
-            this.ClientSize = new System.Drawing.Size(581, 408);
+            this.ClientSize = new System.Drawing.Size(671, 544);
+            this.Controls.Add(this.lblActionDescription);
             this.Controls.Add(this.btnProfile);
             this.Controls.Add(this.txtBVN);
             this.Controls.Add(this.label1);
@@ -186,5 +206,6 @@ namespace Enrollment
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBVN;
         private System.Windows.Forms.Button btnProfile;
+        private System.Windows.Forms.Label lblActionDescription;
     }
 }

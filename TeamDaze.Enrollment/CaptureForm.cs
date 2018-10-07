@@ -97,6 +97,14 @@ namespace Enrollment
         {
             Init();
             Start();                                                // Start capture operation.
+            if(ActionType == 1)
+            {
+                lblActionDescription.Text = "Personnel Enrollment";
+            }
+            else
+            {
+                lblActionDescription.Text = "Head Count";
+            }
         }
 
         private void CaptureForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -110,18 +118,18 @@ namespace Enrollment
         public void OnComplete(object Capture, string ReaderSerialNumber, DPFP.Sample Sample)
         {
             MakeReport("The fingerprint sample was captured.");
-            SetPrompt("Scan the same fingerprint again.");
+            //SetPrompt("Scan the same fingerprint again.");
             Process(Sample);
         }
 
         public void OnFingerGone(object Capture, string ReaderSerialNumber)
         {
-            MakeReport("The finger was removed from the fingerprint reader.");
+          //  MakeReport("The finger was removed from the fingerprint reader.");
         }
 
         public void OnFingerTouch(object Capture, string ReaderSerialNumber)
         {
-            MakeReport("The fingerprint reader was touched.");
+            //MakeReport("The fingerprint reader was touched.");
         }
 
         public void OnReaderConnect(object Capture, string ReaderSerialNumber)

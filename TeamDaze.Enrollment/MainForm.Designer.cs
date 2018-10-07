@@ -43,9 +43,9 @@ namespace Enrollment
             Bevel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             Bevel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            Bevel.Location = new System.Drawing.Point(12, 91);
+            Bevel.Location = new System.Drawing.Point(22, 91);
             Bevel.Name = "Bevel";
-            Bevel.Size = new System.Drawing.Size(960, 3);
+            Bevel.Size = new System.Drawing.Size(923, 10);
             Bevel.TabIndex = 2;
             // 
             // label1
@@ -53,9 +53,9 @@ namespace Enrollment
             label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            label1.Location = new System.Drawing.Point(12, 187);
+            label1.Location = new System.Drawing.Point(22, 191);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(960, 3);
+            label1.Size = new System.Drawing.Size(919, 13);
             label1.TabIndex = 5;
             // 
             // EnrollButton
@@ -67,7 +67,7 @@ namespace Enrollment
             this.EnrollButton.Name = "EnrollButton";
             this.EnrollButton.Size = new System.Drawing.Size(921, 30);
             this.EnrollButton.TabIndex = 0;
-            this.EnrollButton.Text = "Staff Enrollement";
+            this.EnrollButton.Text = "Personnel Enrollement";
             this.EnrollButton.UseVisualStyleBackColor = false;
             this.EnrollButton.Click += new System.EventHandler(this.EnrollButton_Click);
             // 
@@ -76,24 +76,25 @@ namespace Enrollment
             this.VerifyButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.VerifyButton.BackColor = System.Drawing.Color.White;
-            this.VerifyButton.Location = new System.Drawing.Point(12, 133);
+            this.VerifyButton.Location = new System.Drawing.Point(23, 133);
             this.VerifyButton.Name = "VerifyButton";
-            this.VerifyButton.Size = new System.Drawing.Size(932, 30);
+            this.VerifyButton.Size = new System.Drawing.Size(921, 30);
             this.VerifyButton.TabIndex = 1;
-            this.VerifyButton.Text = "Rollcall";
+            this.VerifyButton.Text = "Head Count";
             this.VerifyButton.UseVisualStyleBackColor = false;
             this.VerifyButton.Click += new System.EventHandler(this.VerifyButton_Click);
             // 
             // CloseButton
             // 
             this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloseButton.BackColor = System.Drawing.Color.White;
             this.CloseButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CloseButton.Location = new System.Drawing.Point(897, 375);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
             this.CloseButton.TabIndex = 6;
             this.CloseButton.Text = "Close";
-            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.UseVisualStyleBackColor = false;
             this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // button1
@@ -101,9 +102,9 @@ namespace Enrollment
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(12, 247);
+            this.button1.Location = new System.Drawing.Point(22, 247);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(960, 30);
+            this.button1.Size = new System.Drawing.Size(919, 30);
             this.button1.TabIndex = 7;
             this.button1.Text = "Report";
             this.button1.UseVisualStyleBackColor = false;

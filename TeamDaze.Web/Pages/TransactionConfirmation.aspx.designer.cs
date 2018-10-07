@@ -10,7 +10,7 @@
 namespace TeamDaze.Web.Pages {
     
     
-    public partial class Confirmation {
+    public partial class TransactionConfirmation {
         
         /// <summary>
         /// main control.

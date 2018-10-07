@@ -222,6 +222,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="fingerprint.PNG" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -246,6 +247,7 @@
     <Content Include="Default.Master" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Pages\TransactionConfirmation.aspx" />
     <Content Include="Pages\TransactionsHistory.aspx" />
     <Content Include="PopCalendar2005\calendar.gif" />
     <Content Include="PopCalendar2005\CSS\Classic.css" />
@@ -415,6 +417,13 @@
     </Compile>
     <Compile Include="Pages\SubmitPayment.aspx.designer.cs">
       <DependentUpon>SubmitPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TransactionConfirmation.aspx.cs">
+      <DependentUpon>TransactionConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\TransactionConfirmation.aspx.designer.cs">
+      <DependentUpon>TransactionConfirmation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\TransactionsHistory.aspx.cs">
       <DependentUpon>TransactionsHistory.aspx</DependentUpon>
