@@ -62,24 +62,26 @@ namespace Enrollment
             // 
             this.EnrollButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.EnrollButton.BackColor = System.Drawing.Color.White;
             this.EnrollButton.Location = new System.Drawing.Point(23, 39);
             this.EnrollButton.Name = "EnrollButton";
             this.EnrollButton.Size = new System.Drawing.Size(921, 30);
             this.EnrollButton.TabIndex = 0;
             this.EnrollButton.Text = "Staff Enrollement";
-            this.EnrollButton.UseVisualStyleBackColor = true;
+            this.EnrollButton.UseVisualStyleBackColor = false;
             this.EnrollButton.Click += new System.EventHandler(this.EnrollButton_Click);
             // 
             // VerifyButton
             // 
             this.VerifyButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.VerifyButton.BackColor = System.Drawing.Color.White;
             this.VerifyButton.Location = new System.Drawing.Point(12, 133);
             this.VerifyButton.Name = "VerifyButton";
-            this.VerifyButton.Size = new System.Drawing.Size(960, 30);
+            this.VerifyButton.Size = new System.Drawing.Size(932, 30);
             this.VerifyButton.TabIndex = 1;
             this.VerifyButton.Text = "Rollcall";
-            this.VerifyButton.UseVisualStyleBackColor = true;
+            this.VerifyButton.UseVisualStyleBackColor = false;
             this.VerifyButton.Click += new System.EventHandler(this.VerifyButton_Click);
             // 
             // CloseButton
@@ -98,18 +100,20 @@ namespace Enrollment
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(12, 247);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(960, 30);
             this.button1.TabIndex = 7;
             this.button1.Text = "Report";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DarkBlue;
             this.CancelButton = this.CloseButton;
             this.ClientSize = new System.Drawing.Size(984, 410);
             this.Controls.Add(this.button1);
