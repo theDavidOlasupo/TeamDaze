@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Web;
@@ -11,19 +12,27 @@ using TeamDaze.BLL.DAL;
 using TeamDaze.BLL.DTO;
 using TeamDaze.BLL.EmailNotification;
 using TeamDaze.Web.UranusCore;
+using SourceAFIS.Simple;
+using System.Drawing;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace TeamDaze.Web.Pages
 {
-    public partial class CardEnrollment : System.Web.UI.Page
+    public partial class CardEnrollment : Page, DPFP.Capture.EventHandler
     {
         string BaseUrl = ConfigurationManager.AppSettings["ApiUrl"].ToString();
         UranusCore.UranusCoreClient client = new UranusCore.UranusCoreClient();
         private string AuthenticatedID = null;
         private string AppToken = "BayometricToken";
         private string sessionKey = null;
+        static AfisEngine Afis;
+
+        private byte[] fingerPrint;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Init();
+            Start();
         }
         TeamDaze.BLL.DAL.Sendmail mailTrxn = new Sendmail();
 
@@ -71,7 +80,7 @@ namespace TeamDaze.Web.Pages
                         //  responseString = await r.Content.ReadAsStringAsync();
 
                         //EmailSender.SendMail(response.Email, Otp);
-                        mailTrxn.SendMailAlerts(response.Email,"Your otp is"+Otp,"Team Daze OTP");
+                        mailTrxn.SendMailAlerts(response.Email, "Your otp is" + Otp, "Team Daze OTP");
                     }
                 }
                 else
@@ -90,7 +99,7 @@ namespace TeamDaze.Web.Pages
             }
         }
 
-        protected async void btnValidateOtp_Click(object sender, EventArgs e)
+        protected  void btnValidateOtp_Click(object sender, EventArgs e)
         {
             if (IsPostBack)
             {
@@ -104,11 +113,12 @@ namespace TeamDaze.Web.Pages
                     {
                         //capture finger print
                         var bvnDetails = (BvnSearchResp)Session["BvnSearchResp"];
-                        var resp = client.CreateSession(new AuthRequestInfo());
+                        //Commented for reader
+                        /*var resp = client.CreateSession(new AuthRequestInfo());
                         if (resp.ResponseCode == BFSClientReturnErrorCode.SUCCESS)
                         {
                             Session["sessionKey"] = resp.SessionKey;
-                        }
+                        }*/
                         //create the user in the DB
                         CustomerRepository customer = new CustomerRepository();
                         //var Duplicated = customer.ValidateDuplicateEnrollment(bvn);
@@ -122,8 +132,9 @@ namespace TeamDaze.Web.Pages
                         }
                         else
                         {
-                            string sessionID = Session["sessionKey"].ToString();
+                           // string sessionID = Session["sessionKey"].ToString();
                             //if (Register.ResponseCode == BFSClientReturnErrorCode.SUCCESS)
+                            Start();
                             if (true)
                             {
 
@@ -150,19 +161,19 @@ namespace TeamDaze.Web.Pages
                                 if (CreationResponse.Item1)
                                 {
                                     //created the user, rerturn success response
-                                    var Register =  client.RegisterPerson(sessionID, bvn);
+                                    //var Register = client.RegisterPerson(sessionID, bvn);
 
-                                   // client.EndSession(sessionID);
+                                    // client.EndSession(sessionID);
                                     Thread.Sleep(2000);
                                     Alertdiv.InnerText = bvnDetails.FirstName + " " + bvnDetails.LastName + " Was created succesfully on Touch 'N' Go Platform successfully";
                                     Alertdiv.Visible = true;
-                                   // return;
+                                    // return;
 
                                 }
                                 else
                                 {
                                     //failed creation
-                                    client.EndSession(sessionID);
+                                    //client.EndSession(sessionID);
                                     Alertdiv.InnerText = "Failed Creation For " + bvnDetails.FirstName + " " + bvnDetails.LastName;
                                     Alertdiv.Visible = true;
                                     return;
@@ -170,7 +181,7 @@ namespace TeamDaze.Web.Pages
                             }
                             else
                             {
-                                client.EndSession(sessionID);
+                               // client.EndSession(sessionID);
                                 Alertdiv.InnerText = "Could Not Capture thumbprint for: " + bvnDetails.FirstName + " " + bvnDetails.LastName + " Reason:";
                                 Alertdiv.Visible = true;
                                 return;
@@ -191,5 +202,189 @@ namespace TeamDaze.Web.Pages
 
             }
         }
+        private int Enroll(byte[] fingerPrint, string matricNo)
+        {
+            /*RollCallForm.HostelStudent hostelStudent = null;
+            try
+            {
+                //RegistrationDAO.StudentTemplate studentTemplate = new RegistrationDAO.StudentTemplate();
+                Bitmap imageBitmap = new Bitmap(new MemoryStream(fingerPrint));
+                BitmapSource image = Imaging.CreateBitmapSourceFromHBitmap(imageBitmap.GetHbitmap(), IntPtr.Zero,
+                    Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+                studentTemplate.AsBitmapSource = image;
+                hostelStudent = new RollCallForm.HostelStudent();
+                hostelStudent.MatricNo = matricNo;
+                // Add fingerprint to the person
+                hostelStudent.Fingerprints.Add(studentTemplate);
+                Afis.Extract(hostelStudent);
+                imageBitmap.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                //this.BeginInvoke((Action)(() =>
+                //{
+                //    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK,
+                //        MessageBoxIcon.Error);
+                //}));
+            }*/
+            return 1;
+        }
+
+        protected void Start()
+        {
+            if (null != Capturer)
+            {
+                try
+                {
+                    Capturer.StartCapture();
+                    SetPrompt("Using the fingerprint reader, scan your fingerprint.");
+                }
+                catch(Exception ex)
+                {
+                    SetPrompt("Can't initiate capture!");
+                }
+            }
+        }
+
+        protected void Stop()
+        {
+            if (null != Capturer)
+            {
+                try
+                {
+                    Capturer.StopCapture();
+                }
+                catch
+                {
+                    SetPrompt("Can't terminate capture!");
+                }
+            }
+        }
+
+        protected Bitmap ConvertSampleToBitmap(DPFP.Sample Sample)
+        {
+            DPFP.Capture.SampleConversion Convertor = new DPFP.Capture.SampleConversion();	// Create a sample convertor.
+            Bitmap bitmap = null;												            // TODO: the size doesn't matter
+            Convertor.ConvertToPicture(Sample, ref bitmap);									// TODO: return bitmap as a result
+            return bitmap;
+        }
+
+        protected new virtual void Init()
+        {
+            try
+            {
+                Capturer = new DPFP.Capture.Capture();				// Create a capture operation.
+
+                if (null != Capturer)
+                    Capturer.EventHandler = this;					// Subscribe for capturing events.
+                else
+                    SetPrompt("Can't initiate capture operation!");
+            }
+            catch
+            {
+                Debug.WriteLine("Can't initiate capture operation!");
+            }
+        }
+
+        public byte[] ToByteArray(Bitmap image)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                image.Save(ms, ImageFormat.Bmp);
+                return ms.ToArray();
+            }
+        }
+        protected virtual Bitmap Process(DPFP.Sample Sample)
+        {
+            var bitmap = ConvertSampleToBitmap(Sample);
+            fingerPrint = ToByteArray(bitmap);
+            // Draw fingerprint sample image.
+            DrawPicture(bitmap);
+            return bitmap;
+        }
+
+        public void OnComplete(object Capture, string ReaderSerialNumber, DPFP.Sample Sample)
+        {
+            MakeReport("The fingerprint sample was captured.");
+            Process(Sample);
+            //Afis.Threshold = 10;
+            Random random = new Random();
+          int result = Enroll(fingerPrint, "#" + random.Next(1000, 9999));
+            /*RollCallForm.HostelStudent match = Afis.Identify(probe, database).FirstOrDefault() as RollCallForm.HostelStudent;
+            // Null result means that there is no candidate with similarity score above threshold
+            if (match != null)
+            {
+                this.BeginInvoke((Action)(() =>
+                {
+                    btnRegister.Enabled = false;
+                    MessageBox.Show("Double enrollment of fingerprint is not allowed", "Error", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }));
+            }
+            else
+            {
+                this.BeginInvoke((Action)(() =>
+                {
+                    btnRegister.Enabled = true;
+                }));
+            }*/
+
+        }
+
+        public void OnFingerGone(object Capture, string ReaderSerialNumber)
+        {
+            MakeReport("The finger was removed from the fingerprint reader.");
+        }
+
+        public void OnFingerTouch(object Capture, string ReaderSerialNumber)
+        {
+            MakeReport("The fingerprint reader was touched.");
+        }
+
+        public void OnReaderConnect(object Capture, string ReaderSerialNumber)
+        {
+            MakeReport("The fingerprint reader was connected.");
+        }
+
+        public void OnReaderDisconnect(object Capture, string ReaderSerialNumber)
+        {
+            MakeReport("The fingerprint reader was disconnected.");
+        }
+
+        public void OnSampleQuality(object Capture, string ReaderSerialNumber, DPFP.Capture.CaptureFeedback CaptureFeedback)
+        {
+            if (CaptureFeedback == DPFP.Capture.CaptureFeedback.Good)
+                MakeReport("The quality of the fingerprint sample is good.");
+            else
+                MakeReport("The quality of the fingerprint sample is poor.");
+        }
+
+        protected void SetPrompt(string prompt)
+        {
+            //this.Invoke(new Function(delegate () {
+            //    Prompt.Text = prompt;
+            //}));
+            Debug.WriteLine(prompt);
+        }
+
+        protected void MakeReport(string message)
+        {
+            //this..BeginInvoke((Action)(() =>
+            //{
+            //    StatusText.AppendText(message + "\r\n");
+            //}));
+            Debug.WriteLine(message);
+        }
+
+        private void DrawPicture(Bitmap bitmap)
+        {
+            //this.Invoke(new Function(delegate () {
+            //   // Picture.Image = new Bitmap(bitmap, Picture.Size);   // fit the image into the picture box
+            //}));
+        }
+
+        private DPFP.Capture.Capture Capturer;
+
     }
 }

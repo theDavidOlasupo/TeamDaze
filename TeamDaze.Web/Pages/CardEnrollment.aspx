@@ -1,4 +1,4 @@
-﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="CardEnrollment.aspx.cs" Inherits="TeamDaze.Web.Pages.CardEnrollment" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CardEnrollment.aspx.cs" Inherits="TeamDaze.Web.Pages.CardEnrollment" %>
 
 <!DOCTYPE html>
 <html lang="en">
